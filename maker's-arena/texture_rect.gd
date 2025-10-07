@@ -7,5 +7,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+#	pass
+
+func _input(InputEvent) -> void:
+	if Input.is_action_just_pressed("a"):
+		get_tree().change_scene_to_file("res://Arena.tscn")

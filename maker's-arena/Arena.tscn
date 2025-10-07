@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct4u23oa17xvj"]
+[gd_scene load_steps=4 format=3 uid="uid://ct4u23oa17xvj"]
 
 [ext_resource type="Texture2D" uid="uid://dljigcw6pw0ek" path="res://arena_files/arena_BG.svg" id="1_bcb0y"]
 [ext_resource type="Texture2D" uid="uid://sue4s13k60tg" path="res://arena_files/yellow bot.svg" id="2_u45fm"]
+[ext_resource type="Script" uid="uid://be47pqy1bi6me" path="res://player_1.gd" id="2_vbyki"]
 
 [node name="Arena" type="Node"]
 
@@ -11,6 +12,7 @@ offset_bottom = 40.0
 texture = ExtResource("1_bcb0y")
 
 [node name="Player1" type="CharacterBody2D" parent="."]
+script = ExtResource("2_vbyki")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player1"]
 position = Vector2(236, 489)
@@ -19,3 +21,8 @@ texture = ExtResource("2_u45fm")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player1"]
 position = Vector2(236, 489)
 polygon = PackedVector2Array(-49, -61, -15, -56, 12, -56, 44, -62, 52, -56, 53, 11, 76, 11, 84, 18, 84, 55, 77, 61, -78, 61, -85, 54, -84, 18, -76, 11, -54, 11, -54, -55)
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions"]
+polygon = PackedVector2Array(84, 57, 94, 49, 1055, 50, 1063, 57, 1061, 590, 1056, 596, 95, 596, 90, 592, 90, 66, -4, 36, -67, 124, -35, 626, 9, 714, 1195, 683, 1229, 623, 1198, -99, 583, -159, -28, -145, -101, 2, -71, 94, -13, 40, -4, 34, 89, 65, 90, 65, 90, 56)
