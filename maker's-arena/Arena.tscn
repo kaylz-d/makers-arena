@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct4u23oa17xvj"]
+
+[ext_resource type="Texture2D" uid="uid://dljigcw6pw0ek" path="res://arena_files/arena_BG.svg" id="1_bcb0y"]
+[ext_resource type="Texture2D" uid="uid://sue4s13k60tg" path="res://arena_files/yellow bot.svg" id="2_u45fm"]
+
+[node name="Arena" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_bcb0y")
+
+[node name="Player1" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+position = Vector2(236, 489)
+texture = ExtResource("2_u45fm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player1"]
+position = Vector2(236, 489)
+polygon = PackedVector2Array(-49, -61, -15, -56, 12, -56, 44, -62, 52, -56, 53, 11, 76, 11, 84, 18, 84, 55, 77, 61, -78, 61, -85, 54, -84, 18, -76, 11, -54, 11, -54, -55)
