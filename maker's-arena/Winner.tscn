@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://dakvehbfuaiml"]
+
+[ext_resource type="Script" uid="uid://b6ksn6arr6t0l" path="res://winner.gd" id="1_c6i47"]
+[ext_resource type="Texture2D" uid="uid://rgqnanmywq61" path="res://images/bg.png" id="1_v1dhl"]
+[ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="2_atagj"]
+[ext_resource type="Script" uid="uid://dp7dthfcqtone" path="res://Winner_texture_rect.gd" id="2_c6i47"]
+
+[node name="Winner" type="Node"]
+script = ExtResource("1_c6i47")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_v1dhl")
+script = ExtResource("2_c6i47")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Result" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_atagj")
+theme_override_font_sizes/font_size = 80
+text = "Player # Wins!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_atagj")
+theme_override_font_sizes/font_size = 30
+text = "Press SPACE to play again"
+
+[node name="Button2" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_atagj")
+theme_override_font_sizes/font_size = 30
+text = "Press ESC to return to menu"

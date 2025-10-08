@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bijtvsf58gl0h" path="res://texture_rect.gd" id="2_iwfq2"]
 [ext_resource type="Texture2D" uid="uid://cms3qsqywjv3l" path="res://main_menu_files/new_title.svg" id="2_qoqlk"]
 [ext_resource type="Shader" uid="uid://6cgaavom1k32" path="res://main_menu_files/MainMenu.gdshader" id="3_qoqlk"]
-[ext_resource type="FontFile" uid="uid://c7wq4pyyvq6hy" path="res://fonts/SedgwickAve-Regular.ttf" id="4_iwfq2"]
+[ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="5_iwfq2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7r1g0"]
 shader = ExtResource("3_qoqlk")
@@ -15,6 +15,10 @@ shader_parameter/speed = 5.0
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 120
@@ -45,8 +49,8 @@ layout_mode = 2
 material = SubResource("ShaderMaterial_7r1g0")
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.318867, 0.33606, 0.840286, 1)
-theme_override_fonts/font = ExtResource("4_iwfq2")
+theme_override_fonts/font = ExtResource("5_iwfq2")
 theme_override_font_sizes/font_size = 30
-text = "Press A to start"
+text = "Press SPACE to start"
 horizontal_alignment = 1
 vertical_alignment = 1
