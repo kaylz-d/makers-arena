@@ -51,6 +51,8 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Out_Area2D"]
+position = Vector2(230, 52)
+scale = Vector2(0.599722, 0.586371)
 polygon = PackedVector2Array(428, 70, 428, 184, 429, 201, 469, 241, 556, 269, 625, 264, 685, 239, 718, 206, 727, 182, 726, 66)
 
 [connection signal="body_entered" from="Out_Area2D" to="Player1" method="_on_out_area_2d_body_entered"]

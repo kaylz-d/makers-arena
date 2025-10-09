@@ -1,6 +1,6 @@
 extends Node
 
-signal p1_won(winner_text: String)
+#signal player_won(winner_text: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

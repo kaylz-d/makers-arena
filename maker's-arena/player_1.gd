@@ -73,7 +73,6 @@ func _physics_process(delta: float) -> void:
 					#print("We did this instead") #in fact, we did do this (T_T)
 					#took so long to debug
 
-
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		if body.name == ("Player1"):
