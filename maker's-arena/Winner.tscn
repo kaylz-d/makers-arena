@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dakvehbfuaiml"]
+[gd_scene load_steps=6 format=3 uid="uid://dakvehbfuaiml"]
 
 [ext_resource type="Script" uid="uid://b6ksn6arr6t0l" path="res://winner.gd" id="1_c6i47"]
 [ext_resource type="Texture2D" uid="uid://rgqnanmywq61" path="res://images/bg.png" id="1_v1dhl"]
 [ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="2_atagj"]
-[ext_resource type="Script" uid="uid://dp7dthfcqtone" path="res://Winner_texture_rect.gd" id="2_c6i47"]
 [ext_resource type="Script" uid="uid://ijg15c7olwb" path="res://result.gd" id="5_mubos"]
 [ext_resource type="Texture2D" uid="uid://dyuqmh0y3gqyo" path="res://main_menu_files/settings_icon.svg" id="6_c2m3u"]
 
@@ -24,7 +23,6 @@ theme_override_constants/margin_bottom = 80
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
 texture = ExtResource("1_v1dhl")
-script = ExtResource("2_c6i47")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -70,9 +68,11 @@ texture = ExtResource("6_c2m3u")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 94.0
-offset_top = 40.0
-offset_right = 134.0
-offset_bottom = 63.0
+offset_top = 38.0
+offset_right = 147.0
+offset_bottom = 69.0
+theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_fonts/font = ExtResource("2_atagj")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Esc"

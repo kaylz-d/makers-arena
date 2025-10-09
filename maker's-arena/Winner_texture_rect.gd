@@ -10,8 +10,3 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func _input(InputEvent) -> void:
-	if Input.is_action_just_pressed("space"):
-		get_tree().change_scene_to_file("res://Arena.tscn")
-	elif Input.is_action_just_pressed("esc"):
-		get_tree().change_scene_to_file("res://MainMenu.tscn")

@@ -1,13 +1,5 @@
 extends Node
 
-#signal player_won(winner_text: String)
-var player1_score: int = 0
-var player2_score: int = 0
-signal score_changed(_update_score)
-
-func _update_score():
-	$Score.text = str(player1_score) + " - " + str(player2_score)
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,4 +12,6 @@ func _process(delta: float) -> void:
 
 func _input(InputEvent) -> void:
 	if Input.is_action_just_pressed("esc"):
-		get_tree().change_scene_to_file("res://Tutorial.tscn")
+		get_tree().change_scene_to_file("res://MainMenu.tscn")
+	elif Input.is_action_just_pressed("space"):
+		get_tree().change_scene_to_file("res://Arena.tscn")

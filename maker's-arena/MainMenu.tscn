@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d24af1fyunde2"]
+[gd_scene load_steps=8 format=3 uid="uid://d24af1fyunde2"]
 
 [ext_resource type="Texture2D" uid="uid://rgqnanmywq61" path="res://images/bg.png" id="1_eiy7p"]
 [ext_resource type="Script" uid="uid://bijtvsf58gl0h" path="res://texture_rect.gd" id="2_iwfq2"]
 [ext_resource type="Texture2D" uid="uid://cms3qsqywjv3l" path="res://main_menu_files/new_title.svg" id="2_qoqlk"]
 [ext_resource type="Shader" uid="uid://6cgaavom1k32" path="res://main_menu_files/MainMenu.gdshader" id="3_qoqlk"]
 [ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="5_iwfq2"]
+[ext_resource type="Texture2D" uid="uid://dyuqmh0y3gqyo" path="res://main_menu_files/settings_icon.svg" id="6_7r1g0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7r1g0"]
 shader = ExtResource("3_qoqlk")
@@ -33,6 +34,34 @@ script = ExtResource("2_iwfq2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = -20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_7r1g0")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_fonts/font = ExtResource("5_iwfq2")
+theme_override_font_sizes/font_size = 30
+text = "Esc"
 
 [node name="Title" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2

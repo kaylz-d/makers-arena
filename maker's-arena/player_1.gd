@@ -76,7 +76,10 @@ func _physics_process(delta: float) -> void:
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		if body.name == ("Player1"):
-			print("P1 is OUT")
+			#print("P1 is OUT")
+			#NEED TO INCREMENT POINTS AND UPDATE SCOREBOARD FIRST
 			game.result_text = "PLAYER 2 WINS"
+			#if (arena.player2_score) == 3:
+				#game.result_text = "PLAYER 2 WINS"
 			#print("emitted signal that p2 wins")
 			get_tree().change_scene_to_file("res://Winner.tscn")

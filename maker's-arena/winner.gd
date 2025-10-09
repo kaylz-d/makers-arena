@@ -11,3 +11,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func _input(InputEvent) -> void:
+	if Input.is_action_just_pressed("space"):
+		get_tree().change_scene_to_file("res://Arena.tscn")
+	elif Input.is_action_just_pressed("esc"):
+		# yo i don't think this is working rn
+		get_tree().change_scene_to_file("res://Tutorial.tscn")

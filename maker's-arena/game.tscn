@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmfn6ti478tn8"]
+[gd_scene load_steps=6 format=3 uid="uid://dmfn6ti478tn8"]
 
 [ext_resource type="Script" uid="uid://37cng4oq663o" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://d24af1fyunde2" path="res://MainMenu.tscn" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://ct4u23oa17xvj" path="res://Arena.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dakvehbfuaiml" path="res://Winner.tscn" id="3_7jktm"]
+[ext_resource type="PackedScene" uid="uid://bnp5l8ybs6ojt" path="res://Tutorial.tscn" id="5_7jktm"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_fc0e3")
@@ -13,3 +14,5 @@ script = ExtResource("1_fc0e3")
 [node name="Arena" parent="." instance=ExtResource("2_fc0e3")]
 
 [node name="Winner" parent="." instance=ExtResource("3_7jktm")]
+
+[node name="Tutorial" parent="." instance=ExtResource("5_7jktm")]
