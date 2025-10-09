@@ -63,6 +63,9 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		if body.name == ("Player2"):
 			print("P2 is OUT")
+			#game.player_won.emit("PLAYER 1 WINS")
+			#print("emitted signal that p1 wins")
+			game.result_text = "PLAYER 1 WINS"
 			get_tree().change_scene_to_file("res://Winner.tscn")
 			#var label = get_node("Winner/MarginContainer/CenterContainer/VBoxContainer/Result")
 			#label.text = "Player 1 Wins!"
