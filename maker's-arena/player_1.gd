@@ -19,6 +19,9 @@ const SPEED = 46200.0
 const PUSH_FORCE := 300.0
 const MIN_PUSH_FORCE := 250.0
 
+signal p2_score_changed(new_score)
+var score := 0
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not is_on_floor():
@@ -76,10 +79,15 @@ func _physics_process(delta: float) -> void:
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		if body.name == ("Player1"):
+			score += 1
+			emit_signal("p2_score_changed", score)
 			#print("P1 is OUT")
 			#NEED TO INCREMENT POINTS AND UPDATE SCOREBOARD FIRST
-			game.result_text = "PLAYER 2 WINS"
-			#if (arena.player2_score) == 3:
-				#game.result_text = "PLAYER 2 WINS"
-			#print("emitted signal that p2 wins")
-			get_tree().change_scene_to_file("res://Winner.tscn")
+			
+			#game.result_text = "PLAYER 2 WINS"a
+			#get_tree().change_scene_to_file("res://Winner.tscn")
+			
+
+# idk i think this appeared when i connected from arena
+#func _on_arena_p_1_score_changed(_p1_update_score: Variant):
+	#pass # Replace with function body.

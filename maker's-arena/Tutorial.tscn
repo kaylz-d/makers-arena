@@ -94,4 +94,4 @@ Best out of 3.
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_oiqhk")
 theme_override_font_sizes/font_size = 18
-text = "Press Esc to return to title screen"
+text = "Press B to return to title screen"

@@ -103,5 +103,7 @@ text = "0 - 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="p2_score_changed" from="Player1" to="." method="_on_player_1_p_2_score_changed"]
+[connection signal="p1_score_changed" from="Player2" to="." method="_on_player_2_p_1_score_changed"]
 [connection signal="body_entered" from="Out_Area2D" to="Player1" method="_on_out_area_2d_body_entered"]
 [connection signal="body_entered" from="Out_Area2D" to="Player2" method="_on_out_area_2d_body_entered"]
