@@ -18,3 +18,8 @@ func _input(InputEvent) -> void:
 	elif Input.is_action_just_pressed("esc"):
 		# yo i don't think this is working rn
 		get_tree().change_scene_to_file("res://Tutorial.tscn")
+
+
+#func _on_arena_player_won(winner: Variant) -> void:
+	#game.result_text = winner
+	#pass # Replace with function body.

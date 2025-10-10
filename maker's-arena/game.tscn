@@ -16,3 +16,5 @@ script = ExtResource("1_fc0e3")
 [node name="Winner" parent="." instance=ExtResource("3_7jktm")]
 
 [node name="Tutorial" parent="." instance=ExtResource("5_7jktm")]
+
+[connection signal="player_won" from="Arena" to="Winner" method="_on_arena_player_won"]

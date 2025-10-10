@@ -84,8 +84,9 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 			#print("P1 is OUT")
 			#NEED TO INCREMENT POINTS AND UPDATE SCOREBOARD FIRST
 			
-			#game.result_text = "PLAYER 2 WINS"a
-			#get_tree().change_scene_to_file("res://Winner.tscn")
+			if score == 5:
+				game.result_text = "PLAYER 2 WINS"
+				get_tree().change_scene_to_file("res://Winner.tscn")
 			
 
 # idk i think this appeared when i connected from arena
