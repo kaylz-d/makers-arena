@@ -77,6 +77,7 @@ func _physics_process(delta: float) -> void:
 					#took so long to debug
 
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
+	var num_rounds = game.num_rounds
 	if body is CharacterBody2D:
 		if body.name == ("Player1"):
 			score += 1
@@ -84,7 +85,7 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 			#print("P1 is OUT")
 			#NEED TO INCREMENT POINTS AND UPDATE SCOREBOARD FIRST
 			
-			if score == game.num_rounds:
+			if score == num_rounds:
 				game.result_text = "PLAYER 2 WINS"
 				get_tree().change_scene_to_file("res://Winner.tscn")
 			
