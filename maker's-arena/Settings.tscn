@@ -7,16 +7,21 @@
 [node name="Settings" type="Node"]
 script = ExtResource("1_mx4kw")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_bvb5x")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-layout_mode = 2
-texture = ExtResource("1_bvb5x")
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -40,11 +45,11 @@ layout_mode = 2
 theme_override_constants/margin_left = 80
 theme_override_constants/margin_right = 80
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Number_Rounds"]
+[node name="Label_Num_Rounds" type="Label" parent="MarginContainer/VBoxContainer/Number_Rounds"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 30
-text = "Number of Rounds: 5"
+text = "Number of Points to Win: 5"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Number_Rounds"]
 layout_mode = 2
@@ -85,3 +90,22 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 20
 text = "(S)"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_fonts/font = ExtResource("2_2fv1l")
+theme_override_font_sizes/font_size = 18
+text = "Press Esc to return to title screen"

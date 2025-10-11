@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://be47pqy1bi6me" path="res://player_1.gd" id="2_vbyki"]
 [ext_resource type="Script" uid="uid://32mpyf5dfxjw" path="res://player_2.gd" id="4_jycnn"]
 [ext_resource type="Texture2D" uid="uid://daywj3fkyilub" path="res://arena_files/blue bot.svg" id="4_uj4qe"]
-[ext_resource type="Texture2D" uid="uid://bbl5w0146fl2i" path="res://images/settings_icon.svg" id="7_tu31c"]
+[ext_resource type="Texture2D" uid="uid://b6xrehd1iomfy" path="res://main_menu_files/arrow_icon.png" id="7_tu31c"]
 [ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="8_u21bi"]
 
 [node name="Arena" type="Node"]
@@ -26,6 +26,7 @@ script = ExtResource("2_vbyki")
 texture = ExtResource("2_u45fm")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player1"]
+visible = false
 polygon = PackedVector2Array(-49, -61, -15, -56, 12, -56, 44, -62, 52, -56, 53, 11, 76, 11, 84, 18, 84, 55, 77, 61, -78, 61, -85, 54, -84, 18, -76, 11, -54, 11, -54, -55)
 
 [node name="Player2" type="CharacterBody2D" parent="."]
@@ -75,7 +76,7 @@ theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_fonts/font = ExtResource("8_u21bi")
 theme_override_font_sizes/font_size = 30
-text = "M"
+text = "Esc"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 anchors_preset = 7

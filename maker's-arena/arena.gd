@@ -23,16 +23,19 @@ func _on_p1_score_changed(score):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-func _input(InputEvent) -> void:
-	if Input.is_action_just_released("m"):
+	if Input.is_action_just_released("esc"):
+			# WHYYYYY DOES THIS PRINT TWICE BYE
 			print("this runs")
-			get_tree().change_scene_to_file("Settings.tscn")
+			get_tree().change_scene_to_file("res://MainMenu.tscn")
 	#if str(get_node(".")) == "Arena":
 		#if Input.is_action_just_pressed("esc"):
 			#get_tree().change_scene_to_file("../Tutorial")
 			#print("this runs")
+	pass
+
+func _input(InputEvent) -> void:
+	# what if i moved this under process
+	pass
 
 
 func _on_player_1_p_2_score_changed(new_score: Variant) -> void:
@@ -59,4 +62,5 @@ func _update_score() -> void:
 		##emit_signal("player_won", "PLAYER 2 WINS")
 		#get_tree().change_scene_to_file("Winner.tscn")
 	pass
+	
 	

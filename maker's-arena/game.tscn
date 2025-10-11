@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmfn6ti478tn8"]
 
+[ext_resource type="Script" uid="uid://37cng4oq663o" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://d24af1fyunde2" path="res://MainMenu.tscn" id="1_feb5d"]
-[ext_resource type="Script" uid="uid://ijg15c7olwb" path="res://result.gd" id="1_ryrav"]
 [ext_resource type="PackedScene" uid="uid://ct4u23oa17xvj" path="res://Arena.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dakvehbfuaiml" path="res://Winner.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bnp5l8ybs6ojt" path="res://Tutorial.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://dhhjlkcwugni7" path="res://Settings.tscn" id="6_eow3j"]
 
 [node name="Game" type="Node"]
-script = ExtResource("1_ryrav")
+script = ExtResource("1_fc0e3")
 
 [node name="MainMenu" parent="." instance=ExtResource("1_feb5d")]
 
