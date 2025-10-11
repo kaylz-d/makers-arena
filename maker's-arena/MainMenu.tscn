@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d24af1fyunde2"]
+[gd_scene load_steps=7 format=3 uid="uid://d24af1fyunde2"]
 
 [ext_resource type="Texture2D" uid="uid://rgqnanmywq61" path="res://images/bg.png" id="1_eiy7p"]
-[ext_resource type="Script" uid="uid://bijtvsf58gl0h" path="res://texture_rect.gd" id="2_iwfq2"]
 [ext_resource type="Texture2D" uid="uid://cms3qsqywjv3l" path="res://main_menu_files/new_title.svg" id="2_qoqlk"]
 [ext_resource type="Shader" uid="uid://6cgaavom1k32" path="res://main_menu_files/MainMenu.gdshader" id="3_qoqlk"]
 [ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="5_iwfq2"]
@@ -12,7 +11,9 @@ shader = ExtResource("3_qoqlk")
 shader_parameter/height = 5.0
 shader_parameter/speed = 5.0
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="MainMenu" type="Node"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,54 +28,53 @@ theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 80
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
 texture = ExtResource("1_eiy7p")
-script = ExtResource("2_iwfq2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = -20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_7r1g0")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 70
 theme_override_constants/margin_top = 16
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_fonts/font = ExtResource("5_iwfq2")
 theme_override_font_sizes/font_size = 30
-text = "Esc"
+text = "M"
 
-[node name="Title" type="TextureRect" parent="VBoxContainer"]
+[node name="Title" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_qoqlk")
 stretch_mode = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="Start" type="Label" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Start" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
 material = SubResource("ShaderMaterial_7r1g0")
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.318867, 0.33606, 0.840286, 1)

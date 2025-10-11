@@ -26,9 +26,9 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(InputEvent) -> void:
-	if Input.is_action_just_pressed("esc"):
-			get_tree().change_scene_to_file("Tutorial.tscn")
+	if Input.is_action_just_released("m"):
 			print("this runs")
+			get_tree().change_scene_to_file("Settings.tscn")
 	#if str(get_node(".")) == "Arena":
 		#if Input.is_action_just_pressed("esc"):
 			#get_tree().change_scene_to_file("../Tutorial")

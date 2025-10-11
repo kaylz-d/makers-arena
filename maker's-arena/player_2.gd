@@ -71,7 +71,7 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 			score += 1
 			emit_signal("p1_score_changed", score)
 			#print("P2 is OUT")
-			if score == 5:
+			if score == game.num_rounds:
 				game.result_text = "PLAYER 1 WINS"
 				get_tree().change_scene_to_file("res://Winner.tscn")
 			

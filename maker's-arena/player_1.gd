@@ -84,7 +84,7 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 			#print("P1 is OUT")
 			#NEED TO INCREMENT POINTS AND UPDATE SCOREBOARD FIRST
 			
-			if score == 5:
+			if score == game.num_rounds:
 				game.result_text = "PLAYER 2 WINS"
 				get_tree().change_scene_to_file("res://Winner.tscn")
 			

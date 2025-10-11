@@ -15,9 +15,9 @@ func _process(delta: float) -> void:
 func _input(InputEvent) -> void:
 	if Input.is_action_just_pressed("space"):
 		get_tree().change_scene_to_file("res://Arena.tscn")
-	elif Input.is_action_just_pressed("esc"):
+	elif Input.is_action_just_pressed("m"):
 		# yo i don't think this is working rn
-		get_tree().change_scene_to_file("res://Tutorial.tscn")
+		get_tree().change_scene_to_file("res://Settings.tscn")
 
 
 #func _on_arena_player_won(winner: Variant) -> void:

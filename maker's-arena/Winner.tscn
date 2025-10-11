@@ -15,10 +15,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 120
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 120
-theme_override_constants/margin_bottom = 80
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
@@ -75,4 +71,4 @@ theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_fonts/font = ExtResource("2_atagj")
 theme_override_font_sizes/font_size = 30
-text = "Esc"
+text = "M"
