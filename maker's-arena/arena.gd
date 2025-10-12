@@ -10,6 +10,7 @@ func _ready() -> void:
 	
 	#player1.connect("p2_score_changed", Callable(self, "_on_p2_score_changed"))
 	#player2.connect("p1_score_changed", Callable(self, "_on_p1_score_changed"))
+	game._start_timer()
 	pass # Replace with function body.
 	
 func _on_p2_score_changed(score):
@@ -20,9 +21,15 @@ func _on_p1_score_changed(score):
 
 #wait why do i have two of these
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	var timer_node = get_node("UI/CenterContainer/TimerLabel")
+	var elapsed_time = 0.0
+	elapsed_time += delta
+	if elapsed_time <= 3:
+		timer_node.text = str(elapsed_time)
+	
 	if Input.is_action_just_released("esc"):
 			# WHYYYYY DOES THIS PRINT TWICE BYE
 			print("this runs")
@@ -62,5 +69,5 @@ func _update_score() -> void:
 		##emit_signal("player_won", "PLAYER 2 WINS")
 		#get_tree().change_scene_to_file("Winner.tscn")
 	pass
-	
+
 	

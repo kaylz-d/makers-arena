@@ -8,18 +8,30 @@ func _physics_process(delta: float) -> void:
 		
 	var ROTATION_SPEED := 5.2
 	
-	if Input.is_action_pressed("left_p2"):
-		rotation -= ROTATION_SPEED * delta
-	if Input.is_action_pressed("right_p2"):
-		rotation += ROTATION_SPEED * delta
+	if game.allow_arena_input:
+		if Input.is_action_pressed("left_p2"):
+			rotation -= ROTATION_SPEED * delta
+		if Input.is_action_pressed("right_p2"):
+			rotation += ROTATION_SPEED * delta
 		
-	if Input.is_action_pressed("up_p2"):
-		velocity = Vector2.UP.rotated(rotation) * SPEED * delta
-	elif Input.is_action_pressed("down_p2"):
-		velocity = Vector2.UP.rotated(rotation) * -SPEED * delta
+		if Input.is_action_pressed("up_p2"):
+			velocity = Vector2.UP.rotated(rotation) * SPEED * delta
+		elif Input.is_action_pressed("down_p2"):
+			velocity = Vector2.UP.rotated(rotation) * -SPEED * delta
+		else:
+			velocity = Vector2.ZERO
 	else:
-		velocity = Vector2.ZERO
-		
+		if Input.is_action_pressed("left_p2"):
+			rotation = 0.0
+			velocity = Vector2.ZERO
+		if Input.is_action_pressed("right_p2"):
+			rotation = 0.0
+			velocity = Vector2.ZERO
+			
+		if Input.is_action_pressed("up_p2"):
+			velocity = Vector2.ZERO
+		if Input.is_action_pressed("down_p2"):
+			velocity = Vector2.ZERO
 	move_and_slide()
 	
 	#var collision = move_and_collide(velocity * delta)
@@ -62,6 +74,16 @@ func _physics_process(delta: float) -> void:
 signal p1_score_changed(new_score)
 var score := 0
 
+# i = initial bro
+
+var p2_xi := 930.0
+var p2_yi := 400.0
+
+# i should set a timer before the reset...
+func _p2_reset_position() -> void:	
+	position = Vector2(p2_xi, p2_yi)
+	rotation = 0.0
+
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		if body.name == ("Player2"):
@@ -70,6 +92,8 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 			
 			score += 1
 			emit_signal("p1_score_changed", score)
+			_p2_reset_position()
+			game._start_timer()
 			#print("P2 is OUT")
 			if score == game.num_rounds:
 				game.result_text = "PLAYER 1 WINS"

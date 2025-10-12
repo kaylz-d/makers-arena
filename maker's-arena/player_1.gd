@@ -46,17 +46,30 @@ func _physics_process(delta: float) -> void:
 		
 	var ROTATION_SPEED := 5.2
 	
-	if Input.is_action_pressed("a"):
-		rotation -= ROTATION_SPEED * delta
-	if Input.is_action_pressed("d"):
-		rotation += ROTATION_SPEED * delta
+	if game.allow_arena_input:
+		if Input.is_action_pressed("a"):
+			rotation -= ROTATION_SPEED * delta
+		if Input.is_action_pressed("d"):
+			rotation += ROTATION_SPEED * delta
 		
-	if Input.is_action_pressed("w"):
-		velocity = Vector2.UP.rotated(rotation) * SPEED * delta
-	elif Input.is_action_pressed("s"):
-		velocity = Vector2.UP.rotated(rotation) * -SPEED * delta
+		if Input.is_action_pressed("w"):
+			velocity = Vector2.UP.rotated(rotation) * SPEED * delta
+		elif Input.is_action_pressed("s"):
+			velocity = Vector2.UP.rotated(rotation) * -SPEED * delta
+		else:
+			velocity = Vector2.ZERO
 	else:
-		velocity = Vector2.ZERO
+		if Input.is_action_pressed("a"):
+			rotation = 0.0
+			velocity = Vector2.ZERO
+		if Input.is_action_pressed("d"):
+			rotation = 0.0
+			velocity = Vector2.ZERO
+			
+		if Input.is_action_pressed("w"):
+			velocity = Vector2.ZERO
+		if Input.is_action_pressed("s"):
+			velocity = Vector2.ZERO
 	move_and_slide()
 
 	var collision_count = get_slide_collision_count()
@@ -76,12 +89,21 @@ func _physics_process(delta: float) -> void:
 					#print("We did this instead") #in fact, we did do this (T_T)
 					#took so long to debug
 
+var p1_xi := 220.0
+var p1_yi := 400.0
+
+func _p1_reset_position() -> void:
+	position = Vector2(p1_xi, p1_yi)
+	rotation = 0.0
+
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	var num_rounds = game.num_rounds
 	if body is CharacterBody2D:
 		if body.name == ("Player1"):
 			score += 1
 			emit_signal("p2_score_changed", score)
+			_p1_reset_position()
+			game._start_timer()
 			#print("P1 is OUT")
 			#NEED TO INCREMENT POINTS AND UPDATE SCOREBOARD FIRST
 			

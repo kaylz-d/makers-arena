@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 game="*res://game.gd"
 tutorial="res://tutorial.gd"
-arena="res://arena.gd"
+arena="*res://arena.gd"
 
 [display]
 
