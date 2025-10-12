@@ -24,11 +24,14 @@ func _on_p1_score_changed(score):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	var timer_node = get_node("UI/CenterContainer/TimerLabel")
-	var elapsed_time = 0.0
-	elapsed_time += delta
-	if elapsed_time <= 3:
-		timer_node.text = str(elapsed_time)
+	# timer isn't working rn
+	# idk whyyy but it's saying that the TimerLabel node is a null instance
+	
+	#var timer_node = get_node("CenterContainer/TimerLabel")
+	#var elapsed_time = 0.0
+	#elapsed_time += delta
+	#if elapsed_time <= 3:
+		#get_node("CenterContainer/TimerLabel").text = str(elapsed_time)
 	
 	if Input.is_action_just_released("esc"):
 			# WHYYYYY DOES THIS PRINT TWICE BYE

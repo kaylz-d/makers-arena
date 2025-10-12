@@ -105,14 +105,14 @@ text = "0 - 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="UI"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TimerLabel" type="Label" parent="UI/CenterContainer"]
+[node name="TimerLabel" type="Label" parent="CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
@@ -122,6 +122,9 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("8_u21bi")
 theme_override_font_sizes/font_size = 200
 text = "3"
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
 
 [connection signal="p2_score_changed" from="Player1" to="." method="_on_player_1_p_2_score_changed"]
 [connection signal="p1_score_changed" from="Player2" to="." method="_on_player_2_p_1_score_changed"]

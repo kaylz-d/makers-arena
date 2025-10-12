@@ -5,6 +5,7 @@ var num_rounds:= 5
 var p1_score = 0
 var p2_score = 0
 var allow_arena_input = false
+var solo_mode = false
 
 signal player_won(winner)
 signal change_num_rounds(new_num)
