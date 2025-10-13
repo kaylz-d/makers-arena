@@ -18,16 +18,18 @@ func on_change_num_rounds(new_num) -> void:
 
 func _start_timer() -> void:
 	var timer
-	timer_on = true
 	
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
-	timer.set_wait_time(3)
+	timer.set_wait_time(4)
+	timer.one_shot = true
 	add_child(timer)
 	timer.start()
+	timer_on = true
 	#get_node("../Arena/CenterContainer/TimerLabel").display = true
 	allow_arena_input = false
 	print("timer started")
+	# i can definitely redo this with signals...
 	
 func _on_timer_timeout():
 	allow_arena_input = true
