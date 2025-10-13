@@ -1,8 +1,17 @@
 extends CharacterBody2D
-#2 do: add pushing mechanic
+
 const SPEED = 46200.0
 const PUSH_FORCE := 300.0
 const MIN_PUSH_FORCE := 250.0
+const ROTATION_SPEED := 5.2
+
+const ACCELERATION = 1200.0
+const FRICTION = 800.0
+
+const p2_xi := 930.0
+const p2_yi := 400.0
+
+var just_reset = false
 
 func _physics_process(delta: float) -> void:
 		
@@ -76,13 +85,19 @@ var score := 0
 
 # i = initial bro
 
-var p2_xi := 930.0
-var p2_yi := 400.0
-
 # i should set a timer before the reset...
 func _p2_reset_position() -> void:	
+	just_reset = true
 	position = Vector2(p2_xi, p2_yi)
+	print(position)
 	rotation = 0.0
+	velocity = Vector2(0.0, 0.0)
+	
+	%Player1.position = Vector2(220.0, 400.0)
+	%Player1.rotation = 0.0
+	%Player1.velocity = Vector2(0.0,0.0)
+	
+	
 
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:

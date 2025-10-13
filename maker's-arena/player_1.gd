@@ -18,9 +18,13 @@ const SPEED = 46200.0
 #const JUMP_VELOCITY = -400.0
 const PUSH_FORCE := 300.0
 const MIN_PUSH_FORCE := 250.0
+const ROTATION_SPEED := 5.2
 
 signal p2_score_changed(new_score)
 var score := 0
+
+const p1_xi := 220.0
+const p1_yi := 400.0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -43,8 +47,6 @@ func _physics_process(delta: float) -> void:
 	#var isRotating := Input.get_axis("a", "d")
 	#if isRotating:
 		#rotation = isRotating * SPEED
-		
-	var ROTATION_SPEED := 5.2
 	
 	if game.allow_arena_input:
 		if Input.is_action_pressed("a"):
@@ -89,12 +91,14 @@ func _physics_process(delta: float) -> void:
 					#print("We did this instead") #in fact, we did do this (T_T)
 					#took so long to debug
 
-var p1_xi := 220.0
-var p1_yi := 400.0
-
 func _p1_reset_position() -> void:
 	position = Vector2(p1_xi, p1_yi)
 	rotation = 0.0
+	velocity = Vector2(0.0, 0.0)
+	
+	%Player2.position = Vector2(930.0, 400.0)
+	%Player2.rotation = 0.0
+	%Player2.velocity = Vector2(0.0,0.0)
 
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	var num_rounds = game.num_rounds

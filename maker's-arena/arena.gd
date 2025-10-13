@@ -22,7 +22,7 @@ func _on_p1_score_changed(score):
 #wait why do i have two of these
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	# timer isn't working rn
 	# idk whyyy but it's saying that the TimerLabel node is a null instance
@@ -43,9 +43,9 @@ func _process(delta: float) -> void:
 			#print("this runs")
 	pass
 
-func _input(InputEvent) -> void:
-	# what if i moved this under process
-	pass
+#func _input(InputEvent) -> void:
+	## what if i moved this under process
+	#pass
 
 
 func _on_player_1_p_2_score_changed(new_score: Variant) -> void:
@@ -61,7 +61,7 @@ func _on_player_2_p_1_score_changed(new_score: Variant) -> void:
 	_update_score()
 	pass # Replace with function body.
 
-signal player_won(winner)
+#signal player_won(winner)
 func _update_score() -> void:
 	get_node("UI/MarginContainer/CenterContainer/Score").text = str(p1_score) + " - " + str(p2_score)
 	

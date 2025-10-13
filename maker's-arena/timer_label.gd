@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 	
 	if game.timer_on == true:
 		text = str(int(4 - elapsed_time))
+		if str(int(4 - elapsed_time)) == "0":
+			text = "GO!"
 		show()
 	else:
 		hide()
@@ -25,6 +27,6 @@ func _process(delta: float) -> void:
 	else:
 		elapsed_time += (delta) 
 	#
-		print(str(int(elapsed_time)))
+		#print(str(int(elapsed_time)))
 	
 	pass
