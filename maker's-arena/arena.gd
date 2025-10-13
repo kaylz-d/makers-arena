@@ -72,5 +72,4 @@ func _update_score() -> void:
 		##emit_signal("player_won", "PLAYER 2 WINS")
 		#get_tree().change_scene_to_file("Winner.tscn")
 	pass
-
 	

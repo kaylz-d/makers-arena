@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ct4u23oa17xvj"]
+[gd_scene load_steps=10 format=3 uid="uid://ct4u23oa17xvj"]
 
 [ext_resource type="Texture2D" uid="uid://dljigcw6pw0ek" path="res://arena_files/arena_BG.svg" id="1_bcb0y"]
 [ext_resource type="Script" uid="uid://co6bvxg62owkc" path="res://arena.gd" id="1_ml6qp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://daywj3fkyilub" path="res://arena_files/blue bot.svg" id="4_uj4qe"]
 [ext_resource type="Texture2D" uid="uid://b6xrehd1iomfy" path="res://main_menu_files/arrow_icon.png" id="7_tu31c"]
 [ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="8_u21bi"]
+[ext_resource type="Script" uid="uid://bx8u68768n24v" path="res://timer_label.gd" id="9_u21bi"]
 
 [node name="Arena" type="Node"]
 script = ExtResource("1_ml6qp")
@@ -113,6 +114,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TimerLabel" type="Label" parent="CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
@@ -122,9 +124,7 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("8_u21bi")
 theme_override_font_sizes/font_size = 200
 text = "3"
-
-[node name="Label" type="Label" parent="CenterContainer"]
-layout_mode = 2
+script = ExtResource("9_u21bi")
 
 [connection signal="p2_score_changed" from="Player1" to="." method="_on_player_1_p_2_score_changed"]
 [connection signal="p1_score_changed" from="Player2" to="." method="_on_player_2_p_1_score_changed"]
