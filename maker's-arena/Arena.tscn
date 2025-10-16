@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ct4u23oa17xvj"]
+[gd_scene load_steps=12 format=3 uid="uid://ct4u23oa17xvj"]
 
 [ext_resource type="Texture2D" uid="uid://dljigcw6pw0ek" path="res://arena_files/arena_BG.svg" id="1_bcb0y"]
 [ext_resource type="Script" uid="uid://co6bvxg62owkc" path="res://arena.gd" id="1_ml6qp"]
@@ -10,8 +10,11 @@
 [ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="8_u21bi"]
 [ext_resource type="Script" uid="uid://bx8u68768n24v" path="res://timer_label.gd" id="9_u21bi"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_18q8f"]
+bounce = 0.8
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u21bi"]
-bounce = 12.0
+bounce = 0.5
 
 [node name="Arena" type="Node"]
 script = ExtResource("1_ml6qp")
@@ -40,6 +43,7 @@ position = Vector2(930, 400)
 scale = Vector2(0.75, 0.75)
 collision_layer = 3
 collision_mask = 2
+motion_mode = 1
 script = ExtResource("4_jycnn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player2"]
@@ -48,13 +52,22 @@ texture = ExtResource("4_uj4qe")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player2"]
 polygon = PackedVector2Array(-51, -60, -39, -62, -14, -57, 14, -57, 37, -62, 52, -58, 54, -50, 53, 11, 79, 12, 84, 18, 84, 54, 76, 62, -77, 61, -83, 54, -83, 17, -75, 11, -53, 11, -54, -55)
 
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_18q8f")
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+polygon = PackedVector2Array(84, 57, 94, 49, 1055, 50, 1063, 57, 1061, 590, 1056, 596, 95, 596, 90, 592, 90, 66, -4, 36, -67, 124, -35, 626, 9, 714, 1195, 683, 1229, 623, 1198, -99, 583, -159, -28, -145, -101, 2, -71, 94, -13, 40, -4, 34, 89, 65, 90, 65, 90, 56)
+
 [node name="Collisions" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 3
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_u21bi")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions"]
-polygon = PackedVector2Array(84, 57, 94, 49, 1055, 50, 1063, 57, 1061, 590, 1056, 596, 95, 596, 90, 592, 90, 66, -4, 36, -67, 124, -35, 626, 9, 714, 1195, 683, 1229, 623, 1198, -99, 583, -159, -28, -145, -101, 2, -71, 94, -13, 40, -4, 34, 89, 65, 90, 65, 90, 56)
 
 [node name="Out_Area2D" type="Area2D" parent="."]
 collision_layer = 3

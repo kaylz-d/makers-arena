@@ -1,24 +1,12 @@
 extends CharacterBody2D
 
-#const SPEED := 200.0
-#const ACCELERATION := 800.0
-#const FRICTION := 600.0
-#var VELOCITY: Vector2 = Vector2.ZERO
-#
-#func _input(event: InputEvent) -> void:
-	#var input = Vector2.ZERO
-	#
-	#input.x = Input.get_action_strength("d") - Input.get_action_strength("a")
-	#input.y = Input.get_action_strength("s") - Input.get_action_strength("w")
-	#
-	#if input != Vector2.ZERO:
-		#position += input*32
-#
-const SPEED = 46200.0
-#const JUMP_VELOCITY = -400.0
+const SPEED = 36200.0
 const PUSH_FORCE := 300.0
 const MIN_PUSH_FORCE := 250.0
 const ROTATION_SPEED := 5.2
+var bounce_strength := 0.6
+var bounce_timer := 0.0
+var good_to_bounce
 
 signal p2_score_changed(new_score)
 var score := 0
@@ -26,27 +14,15 @@ var score := 0
 const p1_xi := 220.0
 const p1_yi := 400.0
 
+func _good_to_bounce() -> void:
+	if is_on_ceiling() or is_on_wall() or is_on_floor():
+		good_to_bounce = true
+	else:
+		good_to_bounce = false
+
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
-
-	# Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	
-	#var direction := Input.get_axis("w", "s")
-	#if direction:
-		#velocity.y = direction * SPEED
-	#else:
-		#velocity.y = move_toward(velocity.y, 0, SPEED)
-		#
-	#var isRotating := Input.get_axis("a", "d")
-	#if isRotating:
-		#rotation = isRotating * SPEED
+	var input_velocity := Vector2.ZERO
 	
 	if game.allow_arena_input:
 		if Input.is_action_pressed("a"):
@@ -55,24 +31,18 @@ func _physics_process(delta: float) -> void:
 			rotation += ROTATION_SPEED * delta
 		
 		if Input.is_action_pressed("w"):
-			velocity = Vector2.UP.rotated(rotation) * SPEED * delta
+			input_velocity = Vector2.UP.rotated(rotation) * SPEED # * delta
 		elif Input.is_action_pressed("s"):
-			velocity = Vector2.UP.rotated(rotation) * -SPEED * delta
+			input_velocity = Vector2.UP.rotated(rotation) * -SPEED # * delta
 		else:
-			velocity = Vector2.ZERO
+			input_velocity = Vector2.ZERO
 	else:
-		if Input.is_action_pressed("a"):
-			rotation = 0.0
-			velocity = Vector2.ZERO
-		if Input.is_action_pressed("d"):
-			rotation = 0.0
-			velocity = Vector2.ZERO
-			
-		if Input.is_action_pressed("w"):
-			velocity = Vector2.ZERO
-		if Input.is_action_pressed("s"):
-			velocity = Vector2.ZERO
+		rotation = 0.0
+		input_velocity = Vector2.ZERO
+	
+	velocity = input_velocity * delta
 	move_and_slide()
+	good_to_bounce = false
 
 	var collision_count = get_slide_collision_count()
 	
@@ -83,13 +53,19 @@ func _physics_process(delta: float) -> void:
 			
 			if typeof(c) == TYPE_OBJECT and c is KinematicCollision2D:
 				var normal := c.get_normal()
-				
 				var other := c.get_collider()
+				
 				if other is CharacterBody2D:
 					var pushforce = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
 					other.global_position += -normal * pushforce * delta
 					#print("We did this instead") #in fact, we did do this (T_T)
 					#took so long to debug
+				elif other is RigidBody2D:
+					var bounce_normal = normal.normalized()
+					velocity = velocity.bounce(bounce_normal) * bounce_strength
+					print("bounce da rigid")
+					good_to_bounce = true
+					move_and_slide()
 
 func _p1_reset_position() -> void:
 	position = Vector2(p1_xi, p1_yi)

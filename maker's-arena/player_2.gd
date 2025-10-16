@@ -1,29 +1,28 @@
 extends CharacterBody2D
 
-const SPEED = 46200.0
+const SPEED = 36200.0
 const PUSH_FORCE := 300.0
 const MIN_PUSH_FORCE := 250.0
 const ROTATION_SPEED := 5.2
-var bounce_strength := 300
+var bounce_strength := 0.6
 var bounce_timer := 0.0
+var good_to_bounce
 
-const ACCELERATION = 1200.0
-const FRICTION = 800.0
+#const ACCELERATION = 1200.0
+#const FRICTION = 800.0
 
 const p2_xi := 930.0
 const p2_yi := 400.0
 
 var just_reset = false
 
-#func _good_to_bounce() -> bool:
-	#if is_on_ceiling() or is_on_wall() or is_on_floor():
-		#return true
-	#else:
-		#return false
+func _good_to_bounce() -> void:
+	if is_on_ceiling() or is_on_wall() or is_on_floor():
+		good_to_bounce = true
+	else:
+		good_to_bounce = false
 
 func _physics_process(delta: float) -> void:
-		
-	var ROTATION_SPEED := 5.2
 	var input_velocity := Vector2.ZERO
 	
 	#if _good_to_bounce():
@@ -41,41 +40,19 @@ func _physics_process(delta: float) -> void:
 				rotation += ROTATION_SPEED * delta
 		
 			if Input.is_action_pressed("up_p2"):
-				input_velocity = Vector2.UP.rotated(rotation) * SPEED * delta
+				input_velocity = Vector2.UP.rotated(rotation) * SPEED # * delta
 			elif Input.is_action_pressed("down_p2"):
-				input_velocity = Vector2.UP.rotated(rotation) * -SPEED * delta
+				input_velocity = Vector2.UP.rotated(rotation) * -SPEED # * delta
 			else:
 				input_velocity = Vector2.ZERO
 		else:
-			if Input.is_action_pressed("left_p2"):
-				rotation = 0.0
-				input_velocity = Vector2.ZERO
-			if Input.is_action_pressed("right_p2"):
-				rotation = 0.0
-				input_velocity = Vector2.ZERO
-			
-			if Input.is_action_pressed("up_p2"):
-				input_velocity = Vector2.ZERO
-			if Input.is_action_pressed("down_p2"):
-				input_velocity = Vector2.ZERO
+			rotation = 0.0
+			input_velocity = Vector2.ZERO
 	
-	velocity = input_velocity
+	velocity = input_velocity * delta
+	
 	move_and_slide()
-	
-	
-	#var collision = move_and_collide(velocity * delta)
-	#if collision:
-		#var normal = collision.getnormal()
-
-	#from tutorial by Queble using RigidBody2D
-	# errors saying getnormal does not exist in KinematicCollision2D
-	#for i in get_slide_collision_count():
-		#var c = get_slide_collision(i)
-#d		var normal = c.getnormal()
-		#if c.get_collider() is CharacterBody2D:
-			#var push_force = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
-			#c.get_collider().apply_central_impulse(-c.normal * push_force)
-			
+	good_to_bounce = false
 	
 	var collision_count = get_slide_collision_count()
 	
@@ -94,11 +71,12 @@ func _physics_process(delta: float) -> void:
 					other.global_position += -normal * pushforce * delta
 					#print("We did this instead") #in fact, we did do this (T_T)
 					#took so long to debug
-				#elif other is StaticBody2D:
-					#var bounce_normal = normal.normalized()
-					#velocity = velocity.bounce(bounce_normal) * bounce_strength
-					#move_and_slide()
-					#print("bounce")
+				elif other is RigidBody2D:
+					var bounce_normal = normal.normalized()
+					velocity = velocity.bounce(bounce_normal) * bounce_strength
+					print("bounce da rigid")
+					good_to_bounce = true
+					move_and_slide()
 					#bounce_timer = 0.15
 			
 			#if c:
