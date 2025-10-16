@@ -6,6 +6,7 @@ var num_rounds:= 5
 var p1_score = 0
 var p2_score = 0
 var allow_arena_input = false
+var allow_p2_input = false
 var solo_mode = false
 var timer_on = false
 
@@ -33,11 +34,13 @@ func _start_timer() -> void:
 	timer_on = true
 	#get_node("../Arena/CenterContainer/TimerLabel").display = true
 	allow_arena_input = false
+	allow_p2_input = false
 	print("timer started")
 	# i can definitely redo this with signals...
 	
 func _on_timer_timeout():
 	allow_arena_input = true
+	allow_p2_input = true
 	timer_on = false
 	#get_node("/root/Arena/CenterContainer/TimerLabel").display = false
 	print("timer_ended!")

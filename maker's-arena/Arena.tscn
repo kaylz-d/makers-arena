@@ -21,6 +21,7 @@ texture = ExtResource("1_bcb0y")
 [node name="Player1" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(220, 400)
+scale = Vector2(0.75, 0.75)
 collision_layer = 3
 script = ExtResource("2_vbyki")
 
@@ -33,6 +34,7 @@ polygon = PackedVector2Array(-49, -61, -15, -56, 12, -56, 44, -62, 52, -56, 53, 
 [node name="Player2" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(930, 400)
+scale = Vector2(0.75, 0.75)
 collision_layer = 3
 collision_mask = 2
 script = ExtResource("4_jycnn")
