@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ct4u23oa17xvj"]
+[gd_scene load_steps=11 format=3 uid="uid://ct4u23oa17xvj"]
 
 [ext_resource type="Texture2D" uid="uid://dljigcw6pw0ek" path="res://arena_files/arena_BG.svg" id="1_bcb0y"]
 [ext_resource type="Script" uid="uid://co6bvxg62owkc" path="res://arena.gd" id="1_ml6qp"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://b6xrehd1iomfy" path="res://main_menu_files/arrow_icon.png" id="7_tu31c"]
 [ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="8_u21bi"]
 [ext_resource type="Script" uid="uid://bx8u68768n24v" path="res://timer_label.gd" id="9_u21bi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u21bi"]
+bounce = 12.0
 
 [node name="Arena" type="Node"]
 script = ExtResource("1_ml6qp")
@@ -48,6 +51,7 @@ polygon = PackedVector2Array(-51, -60, -39, -62, -14, -57, 14, -57, 37, -62, 52,
 [node name="Collisions" type="StaticBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_u21bi")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions"]
 polygon = PackedVector2Array(84, 57, 94, 49, 1055, 50, 1063, 57, 1061, 590, 1056, 596, 95, 596, 90, 592, 90, 66, -4, 36, -67, 124, -35, 626, 9, 714, 1195, 683, 1229, 623, 1198, -99, 583, -159, -28, -145, -101, 2, -71, 94, -13, 40, -4, 34, 89, 65, 90, 65, 90, 56)

@@ -15,10 +15,23 @@ const p2_yi := 400.0
 
 var just_reset = false
 
+#func _good_to_bounce() -> bool:
+	#if is_on_ceiling() or is_on_wall() or is_on_floor():
+		#return true
+	#else:
+		#return false
+
 func _physics_process(delta: float) -> void:
 		
 	var ROTATION_SPEED := 5.2
 	var input_velocity := Vector2.ZERO
+	
+	#if _good_to_bounce():
+		#input_velocity = Vector2.UP.rotated(rotation) * -(SPEED * 0.6) * delta
+		#print("we can bounce rn")
+	#else:
+		#print("but not now")
+		#input_velocity = Vector2.ZERO
 	
 	if bounce_timer <= 0.0:
 		if game.allow_p2_input:
@@ -46,10 +59,9 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_pressed("down_p2"):
 				input_velocity = Vector2.ZERO
 	
-		velocity = input_velocity
-		move_and_slide()
-	else:
-		bounce_timer -= delta
+	velocity = input_velocity
+	move_and_slide()
+	
 	
 	#var collision = move_and_collide(velocity * delta)
 	#if collision:
@@ -71,23 +83,23 @@ func _physics_process(delta: float) -> void:
 		#print("Collision count: ", collision_count)
 		for i in range(collision_count):
 			var c = get_slide_collision(i)
-			var other := c.get_collider()
 			#print(c.get_collider)
 			#print(other)
 			
 			if typeof(c) == TYPE_OBJECT and c is KinematicCollision2D:
+				var other := c.get_collider()
 				var normal := c.get_normal()
 				if other is CharacterBody2D:
 					var pushforce = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
 					other.global_position += -normal * pushforce * delta
 					#print("We did this instead") #in fact, we did do this (T_T)
 					#took so long to debug
-				elif other is StaticBody2D:
-					var bounce_normal = normal.normalized()
-					velocity = velocity.bounce(bounce_normal) * bounce_strength
-					move_and_slide()
-					print("bounce")
-					bounce_timer = 0.15
+				#elif other is StaticBody2D:
+					#var bounce_normal = normal.normalized()
+					#velocity = velocity.bounce(bounce_normal) * bounce_strength
+					#move_and_slide()
+					#print("bounce")
+					#bounce_timer = 0.15
 			
 			#if c:
 				#if c.get_collider() is CharacterBody2D:
