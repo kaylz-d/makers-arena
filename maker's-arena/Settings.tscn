@@ -256,9 +256,9 @@ text = "(S)"
 
 [node name="Selection_arrow" type="Label" parent="."]
 offset_left = 80.0
-offset_top = 260.0
+offset_top = 214.0
 offset_right = 120.0
-offset_bottom = 310.0
+offset_bottom = 264.0
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 50
 text = ">"

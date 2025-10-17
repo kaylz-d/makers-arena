@@ -36,9 +36,9 @@ func _physics_process(delta: float) -> void:
 			input_velocity = Vector2.UP.rotated(rotation) * -SPEED # * delta
 		else:
 			input_velocity = Vector2.ZERO
-	else:
-		rotation = 0.0
-		input_velocity = Vector2.ZERO
+	#else:
+		#rotation = 0.0
+		#input_velocity = Vector2.ZERO
 	
 	velocity = input_velocity * delta
 	move_and_slide()

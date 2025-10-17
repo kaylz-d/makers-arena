@@ -26,12 +26,14 @@ func _process(delta: float) -> void:
 		# going home
 	
 	if Input.is_action_just_pressed("down_p2"):
-		current_selection = 1
+		if current_selection <= 1:
+			current_selection += 1
 	if Input.is_action_just_pressed("up_p2"):
-		current_selection = 0
+		if current_selection >= 1:
+			current_selection -=1
 		
 	if current_selection == 0:
-		selection_arrow.position = Vector2(80.0, 260.0)
+		selection_arrow.position = Vector2(80.0, 214.0)
 		if Input.is_action_just_pressed("w"):
 			current_num_rounds += 1
 			print("adding a round")
@@ -43,8 +45,7 @@ func _process(delta: float) -> void:
 				game.num_rounds = current_num_rounds
 				_update_num_rounds_label()
 	elif current_selection == 1:
-		selection_arrow.position = Vector2(80.0, 330)
-		
+		selection_arrow.position = Vector2(80.0, 284.0)
 		if Input.is_action_just_pressed("w"):
 			game.solo_mode = false
 			offLabel.add_theme_color_override("font_color", Color("#064a4f"))
@@ -54,4 +55,19 @@ func _process(delta: float) -> void:
 			offLabel.add_theme_color_override("font_color", Color("#20CBD7"))
 			onLabel.add_theme_color_override("font_color", Color("#540237"))
 			
+	elif current_selection == 2:
+		selection_arrow.position = Vector2(80.0, 374.0)
+		
+		var specific_offLabel = get_node("MarginContainer/VBoxContainer2/Timer/HBoxContainer/VBoxContainer/Increase")
+		var specific_onLabel = get_node("MarginContainer/VBoxContainer2/Timer/HBoxContainer/VBoxContainer2/Decrease")
+		
+		if Input.is_action_just_pressed("s"):
+			game.timer_override = true
+			specific_offLabel.add_theme_color_override("font_color", Color("#064a4f"))
+			specific_onLabel.add_theme_color_override("font_color", Color("#f979be"))
+		if Input.is_action_just_pressed("w"):
+			game.timer_override = false
+			specific_offLabel.add_theme_color_override("font_color", Color("#20CBD7"))
+			specific_onLabel.add_theme_color_override("font_color", Color("#540237"))
+		
 	pass

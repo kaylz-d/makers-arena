@@ -46,8 +46,14 @@ func _physics_process(delta: float) -> void:
 			else:
 				input_velocity = Vector2.ZERO
 		else:
-			rotation = 0.0
-			input_velocity = Vector2.ZERO
+			#rotation += ROTATION_SPEED
+			if game.solo_mode:
+				if game.timer_on == true:
+					rotation = 0.0
+					input_velocity = Vector2.ZERO
+				else:
+					look_at(%Player1.position)
+					input_velocity = transform.x * SPEED
 	
 	velocity = input_velocity * delta
 	
