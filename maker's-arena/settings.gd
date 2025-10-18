@@ -2,6 +2,7 @@ extends Node
 
 var current_num_rounds = game.num_rounds
 var current_selection = 0
+
 @onready var selection_arrow = get_node("Selection_arrow")
 @onready var thelabel = get_node("MarginContainer/VBoxContainer2/Number_Rounds/Label_Num_Rounds")
 
@@ -62,12 +63,14 @@ func _process(delta: float) -> void:
 		var specific_onLabel = get_node("MarginContainer/VBoxContainer2/Timer/HBoxContainer/VBoxContainer2/Decrease")
 		
 		if Input.is_action_just_pressed("s"):
-			game.timer_override = true
+			#game.timer_override = true
 			specific_offLabel.add_theme_color_override("font_color", Color("#064a4f"))
 			specific_onLabel.add_theme_color_override("font_color", Color("#f979be"))
+			print("made it")
 		if Input.is_action_just_pressed("w"):
-			game.timer_override = false
+			#game.timer_override = false
 			specific_offLabel.add_theme_color_override("font_color", Color("#20CBD7"))
 			specific_onLabel.add_theme_color_override("font_color", Color("#540237"))
-		
+			print("here")
+			game.can_have_timer = false
 	pass

@@ -9,7 +9,7 @@ var allow_arena_input = false
 var allow_p2_input = false
 var solo_mode = false
 var timer_on = false
-var timer_override = false
+var can_have_timer = true
 
 signal player_won(winner)
 signal change_num_rounds(new_num)
@@ -24,7 +24,7 @@ func on_change_num_rounds(new_num) -> void:
 	# good news i think that's done
 
 func _start_timer() -> void:
-	if !timer_override:
+	if can_have_timer:
 		var timer
 	
 		timer = Timer.new()
@@ -41,6 +41,7 @@ func _start_timer() -> void:
 		# i can definitely redo this with signals...
 	else:
 		allow_arena_input = true
+		allow_p2_input = true
 	
 func _on_timer_timeout():
 	allow_arena_input = true

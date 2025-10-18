@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		#print("but not now")
 		#input_velocity = Vector2.ZERO
 	
-	if bounce_timer <= 0.0:
+	if game.can_have_timer:
 		if game.allow_p2_input:
 			if Input.is_action_pressed("left_p2"):
 				rotation -= ROTATION_SPEED * delta
@@ -54,6 +54,21 @@ func _physics_process(delta: float) -> void:
 				else:
 					look_at(%Player1.position)
 					input_velocity = transform.x * SPEED
+					
+# there's defo some redundancies, maybe rewrite later
+
+	else:
+		game.allow_p2_input = true
+		game.allow_arena_input = true
+		if Input.is_action_pressed("left_p2"):
+			rotation -= ROTATION_SPEED * delta
+		if Input.is_action_pressed("right_p2"):
+			rotation += ROTATION_SPEED * delta
+		
+		if Input.is_action_pressed("up_p2"):
+			input_velocity = Vector2.UP.rotated(rotation) * SPEED # * delta
+		elif Input.is_action_pressed("down_p2"):
+			input_velocity = Vector2.UP.rotated(rotation) * -SPEED # * delta
 	
 	velocity = input_velocity * delta
 	
@@ -84,6 +99,8 @@ func _physics_process(delta: float) -> void:
 					good_to_bounce = true
 					move_and_slide()
 					#bounce_timer = 0.15
+			
+	# currently looking for a way to turn timer on and off
 			
 			#if c:
 				#if c.get_collider() is CharacterBody2D:
