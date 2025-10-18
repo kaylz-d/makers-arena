@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 const SPEED = 36200.0
-const PUSH_FORCE := 300.0
-const MIN_PUSH_FORCE := 250.0
+var PUSH_FORCE := 300.0
+var MIN_PUSH_FORCE := 250.0
 const ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
 var bounce_timer := 0.0
@@ -21,6 +21,13 @@ func _good_to_bounce() -> void:
 		good_to_bounce = false
 
 func _physics_process(delta: float) -> void:
+	
+	if game.solo_mode:
+		PUSH_FORCE = 400.0
+		MIN_PUSH_FORCE = 300.0
+	else:
+		PUSH_FORCE = 300.0
+		MIN_PUSH_FORCE = 250.0
 	
 	var input_velocity := Vector2.ZERO
 	

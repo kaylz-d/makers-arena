@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-const SPEED = 36200.0
-const PUSH_FORCE := 300.0
-const MIN_PUSH_FORCE := 250.0
+var SPEED = 36200.0
+const BOT_SPEED = 22000.0
+var PUSH_FORCE := 300.0
+var MIN_PUSH_FORCE := 200.0
 const ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
 var bounce_timer := 0.0
@@ -31,7 +32,69 @@ func _physics_process(delta: float) -> void:
 	#else:
 		#print("but not now")
 		#input_velocity = Vector2.ZERO
-	
+	if game.solo_mode:
+				print("solo mode is true from p2.gd")
+				MIN_PUSH_FORCE = 100.0
+				PUSH_FORCE = 180.0
+				SPEED = BOT_SPEED
+				
+				var look_at_offset = Vector2(0, -20)
+				var distance_from_out = (global_position - %Out_CollisionPolygon2D.position).length()
+				var direction_from_out = (global_position - %Out_CollisionPolygon2D.position).normalized()
+				
+				var distance_from_p1 = (global_position - %Player1.position).length()
+				var direction_from_p1_cl = (global_position - %Player1.position).length() # normalized
+				var dangerous = false
+				
+				const safe_from_p1 = 100.0
+				
+				game.allow_p2_input = false
+				if game.can_have_timer:
+					if game.timer_on:
+						rotation = 0.0
+						input_velocity = Vector2.ZERO
+					else:
+						
+						if distance_from_out <= 10.0 and distance_from_p1 <= safe_from_p1:
+							look_at(%OutArea2D.position)
+							rotation += deg_to_rad(180) * 0.8
+							input_velocity = direction_from_out * SPEED
+							dangerous = true
+						elif distance_from_out <= 15.0 and distance_from_p1 <= safe_from_p1:
+							look_at(%OutArea2D.position)
+							rotation += deg_to_rad(180) * 0.8
+							dangerous = true
+							input_velocity = direction_from_out * BOT_SPEED
+						else:
+							dangerous = false
+							look_at(%Player1.position + look_at_offset)
+							#rotation += 90
+							# will walk right into out area tho :(
+							rotation -= deg_to_rad(270) * 0.8
+							input_velocity = -transform.x * BOT_SPEED
+				elif !game.can_have_timer:
+					if distance_from_out <= 10.0 and distance_from_p1 <= safe_from_p1:
+						#input_velocity = direction_from_out.normalized() * SPEED
+						look_at(%OutArea2D.position)
+						rotation += deg_to_rad(180) * 0.8
+						dangerous = true
+						input_velocity = direction_from_out * SPEED
+					elif distance_from_out <= 15.0:
+						#input_velocity = direction_from_out.normalized() * BOT_SPEED
+						look_at(%OutArea2D.position)
+						rotation += deg_to_rad(180) * 0.8
+						dangerous = true
+						input_velocity = direction_from_out * BOT_SPEED
+					else:
+						look_at(%Player1.position + look_at_offset)
+						#rotation += 90
+						rotation -= deg_to_rad(270)* 0.8
+						input_velocity = -transform.x * BOT_SPEED
+	else:
+		MIN_PUSH_FORCE = 200.0
+		PUSH_FORCE = 300.0
+		SPEED = 36200.0
+					
 	if game.can_have_timer:
 		if game.allow_p2_input:
 			if Input.is_action_pressed("left_p2"):
@@ -45,16 +108,6 @@ func _physics_process(delta: float) -> void:
 				input_velocity = Vector2.UP.rotated(rotation) * -SPEED # * delta
 			else:
 				input_velocity = Vector2.ZERO
-		else:
-			#rotation += ROTATION_SPEED
-			if game.solo_mode:
-				if game.timer_on == true:
-					rotation = 0.0
-					input_velocity = Vector2.ZERO
-				else:
-					look_at(%Player1.position)
-					input_velocity = transform.x * SPEED
-					
 # there's defo some redundancies, maybe rewrite later
 
 	else:
