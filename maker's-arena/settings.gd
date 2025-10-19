@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("s"):
 			#game.timer_override = true
 			game.can_have_timer = true
-			specific_offLabel.add_theme_color_override("font_color", Color("#064a4f"))
+			specific_offLabel.add_theme_color_override("font_color", Color("#540237"))
 			specific_onLabel.add_theme_color_override("font_color", Color("#20CBD7"))
 			print("made it")
 		if Input.is_action_just_pressed("w"):

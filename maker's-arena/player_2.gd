@@ -8,6 +8,7 @@ const ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
 var bounce_timer := 0.0
 var good_to_bounce
+var p2_starting_rotation := -90
 
 #const ACCELERATION = 1200.0
 #const FRICTION = 800.0
@@ -38,7 +39,8 @@ func _physics_process(delta: float) -> void:
 				PUSH_FORCE = 180.0
 				SPEED = BOT_SPEED
 				
-				var look_at_offset = Vector2(0, -20)
+				#var look_at_offset = Vector2(0, -20)
+				var look_at_offset = Vector2(0, 0)
 				var distance_from_out = (global_position - %Out_CollisionPolygon2D.position).length()
 				var direction_from_out = (global_position - %Out_CollisionPolygon2D.position).normalized()
 				
@@ -51,18 +53,19 @@ func _physics_process(delta: float) -> void:
 				game.allow_p2_input = false
 				if game.can_have_timer:
 					if game.timer_on:
-						rotation = 0.0
+						#rotation = deg_to_rad(p2_starting_rotation)
+						print("rotation reset")
 						input_velocity = Vector2.ZERO
 					else:
 						
 						if distance_from_out <= 10.0 and distance_from_p1 <= safe_from_p1:
 							look_at(%OutArea2D.position)
-							rotation += deg_to_rad(180) * 0.8
+							rotation += deg_to_rad(180) * 2
 							input_velocity = direction_from_out * SPEED
 							dangerous = true
 						elif distance_from_out <= 15.0 and distance_from_p1 <= safe_from_p1:
 							look_at(%OutArea2D.position)
-							rotation += deg_to_rad(180) * 0.8
+							rotation += deg_to_rad(180) * 2
 							dangerous = true
 							input_velocity = direction_from_out * BOT_SPEED
 						else:
@@ -70,25 +73,26 @@ func _physics_process(delta: float) -> void:
 							look_at(%Player1.position + look_at_offset)
 							#rotation += 90
 							# will walk right into out area tho :(
-							rotation -= deg_to_rad(270) * 0.8
+							rotation -= deg_to_rad(270) * 2
+							print("rotation reset 180")
 							input_velocity = -transform.x * BOT_SPEED
 				elif !game.can_have_timer:
 					if distance_from_out <= 10.0 and distance_from_p1 <= safe_from_p1:
 						#input_velocity = direction_from_out.normalized() * SPEED
 						look_at(%OutArea2D.position)
-						rotation += deg_to_rad(180) * 0.8
+						rotation += deg_to_rad(180) * 2
 						dangerous = true
 						input_velocity = direction_from_out * SPEED
 					elif distance_from_out <= 15.0:
 						#input_velocity = direction_from_out.normalized() * BOT_SPEED
 						look_at(%OutArea2D.position)
-						rotation += deg_to_rad(180) * 0.8
+						rotation += deg_to_rad(180) * 2
 						dangerous = true
 						input_velocity = direction_from_out * BOT_SPEED
 					else:
 						look_at(%Player1.position + look_at_offset)
 						#rotation += 90
-						rotation -= deg_to_rad(270)* 0.8
+						rotation -= deg_to_rad(270)* 2
 						input_velocity = -transform.x * BOT_SPEED
 	else:
 		MIN_PUSH_FORCE = 200.0

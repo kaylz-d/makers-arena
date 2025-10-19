@@ -41,19 +41,20 @@ polygon = PackedVector2Array(-49, -61, -15, -56, 12, -56, 44, -62, 52, -56, 53, 
 [node name="Player2" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(930, 400)
-rotation = -1.5708
 collision_layer = 3
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("4_jycnn")
 
 [node name="Node2D" type="Node2D" parent="Player2"]
+rotation = -1.5708
 scale = Vector2(0.75, 0.75)
 
 [node name="Sprite2D" type="Sprite2D" parent="Player2/Node2D"]
 texture = ExtResource("4_uj4qe")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player2"]
+rotation = -1.5708
 scale = Vector2(0.75, 0.75)
 polygon = PackedVector2Array(-51, -60, -39, -62, -14, -57, 14, -57, 37, -62, 52, -58, 54, -50, 53, 11, 79, 12, 84, 18, 84, 54, 76, 62, -77, 61, -83, 54, -83, 17, -75, 11, -53, 11, -54, -55)
 
