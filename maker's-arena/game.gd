@@ -10,13 +10,17 @@ var allow_p2_input = false
 var solo_mode = false
 var timer_on = false
 var can_have_timer = true
+var music_on = true
 
 signal player_won(winner)
 signal change_num_rounds(new_num)
 
 func _ready():
-	if music and not audio.playing:
-		audio.play_music(music, -5.0)
+	if music_on:
+		if music and not audio.playing:
+			audio.play_music(music, -5.0)
+	else:
+		audio.stop()
 
 func on_change_num_rounds(new_num) -> void:
 	num_rounds = new_num

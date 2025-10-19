@@ -8,7 +8,7 @@ const ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
 var bounce_timer := 0.0
 var good_to_bounce
-var p2_starting_rotation := -90
+var p2_starting_rotation := 0.0
 
 #const ACCELERATION = 1200.0
 #const FRICTION = 800.0
@@ -17,6 +17,10 @@ const p2_xi := 930.0
 const p2_yi := 400.0
 
 var just_reset = false
+
+#func _ready() -> void:
+	#if !game.solo_mode:
+		#rotation = 0.0
 
 func _good_to_bounce() -> void:
 	if is_on_ceiling() or is_on_wall() or is_on_floor():
@@ -174,7 +178,7 @@ func _p2_reset_position() -> void:
 	just_reset = true
 	position = Vector2(p2_xi, p2_yi)
 	print(position)
-	rotation = 0.0
+	rotation = 0.0 # tricky.
 	velocity = Vector2(0.0, 0.0)
 	
 	%Player1.position = Vector2(220.0, 400.0)

@@ -7,6 +7,7 @@ const ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
 var bounce_timer := 0.0
 var good_to_bounce
+var p1_initial_rotation := 90.0
 
 signal p2_score_changed(new_score)
 var score := 0
