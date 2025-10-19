@@ -119,11 +119,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/margin_top = 40
 
-[node name="Label3" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/MarginContainer2/VBoxContainer/CenterContainer2/MarginContainer"]
+[node name="PressLabel" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/MarginContainer2/VBoxContainer/CenterContainer2/MarginContainer"]
 material = SubResource("ShaderMaterial_73or5")
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
 theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_oiqhk")
 theme_override_font_sizes/font_size = 18
 text = "Press Esc to return to title screen"

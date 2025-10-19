@@ -27,15 +27,18 @@ texture = ExtResource("1_bcb0y")
 [node name="Player1" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(220, 400)
-rotation = 1.5708
 scale = Vector2(0.75, 0.75)
 collision_layer = 3
 script = ExtResource("2_vbyki")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+[node name="Node2D" type="Node2D" parent="Player1"]
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1/Node2D"]
 texture = ExtResource("2_u45fm")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player1"]
+rotation = 1.5708
 polygon = PackedVector2Array(-49, -61, -15, -56, 12, -56, 44, -62, 52, -56, 53, 11, 76, 11, 84, 18, 84, 55, 77, 61, -78, 61, -85, 54, -84, 18, -76, 11, -54, 11, -54, -55)
 
 [node name="Player2" type="CharacterBody2D" parent="."]

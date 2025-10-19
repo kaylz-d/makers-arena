@@ -4,12 +4,21 @@ var current_num_rounds = game.num_rounds
 var current_selection = 0
 
 @onready var selection_arrow = get_node("Selection_arrow")
-@onready var thelabel = get_node("MarginContainer/VBoxContainer2/Number_Rounds/Label_Num_Rounds")
 
-@onready var offLabel = get_node("MarginContainer/VBoxContainer2/Solo_Mode/HBoxContainer/VBoxContainer2/Decrease")
-@onready var onLabel = get_node("MarginContainer/VBoxContainer2/Solo_Mode/HBoxContainer/VBoxContainer/Increase")
 # 0 = change num rounds
 # 1 = change solo mode
+# 2 = timer
+
+#1 NUM ROUNDS
+@onready var thelabel = get_node("MarginContainer/MarginContainer/ALL_SETTINGS/Number_Rounds/Label_Num_Rounds")
+
+#2 SOLO MODE
+@onready var onLabel = get_node("MarginContainer/MarginContainer/ALL_SETTINGS/Solo_Mode/HBoxContainer/VBoxContainer/Increase")
+@onready var offLabel = get_node("MarginContainer/MarginContainer/ALL_SETTINGS/Solo_Mode/HBoxContainer/VBoxContainer2/Decrease")
+
+#3 TIMER
+@onready var specific_offLabel = get_node("MarginContainer/MarginContainer/ALL_SETTINGS/Timer/HBoxContainer/VBoxContainer/Increase")
+@onready var specific_onLabel = get_node("MarginContainer/MarginContainer/ALL_SETTINGS/Timer/HBoxContainer/VBoxContainer2/Decrease")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,7 +43,7 @@ func _process(delta: float) -> void:
 			current_selection -=1
 		
 	if current_selection == 0:
-		selection_arrow.position = Vector2(80.0, 214.0)
+		selection_arrow.position = Vector2(80.0, 254.0)
 		if Input.is_action_just_pressed("w"):
 			current_num_rounds += 1
 			print("adding a round")
@@ -46,7 +55,7 @@ func _process(delta: float) -> void:
 				game.num_rounds = current_num_rounds
 				_update_num_rounds_label()
 	elif current_selection == 1: # SOLO MODE
-		selection_arrow.position = Vector2(80.0, 284.0)
+		selection_arrow.position = Vector2(80.0, 324.0)
 		if Input.is_action_just_pressed("w"):
 			game.solo_mode = false
 			offLabel.add_theme_color_override("font_color", Color("#064a4f"))
@@ -58,14 +67,12 @@ func _process(delta: float) -> void:
 			onLabel.add_theme_color_override("font_color", Color("#540237"))
 			
 	elif current_selection == 2: #TIMER
-		selection_arrow.position = Vector2(80.0, 374.0)
-		
-		var specific_offLabel = get_node("MarginContainer/VBoxContainer2/Timer/HBoxContainer/VBoxContainer/Increase")
-		var specific_onLabel = get_node("MarginContainer/VBoxContainer2/Timer/HBoxContainer/VBoxContainer2/Decrease")
+		selection_arrow.position = Vector2(80.0, 394.0)
 		
 		if Input.is_action_just_pressed("s"):
 			#game.timer_override = true
 			game.can_have_timer = true
+			game.timer_on = true
 			specific_offLabel.add_theme_color_override("font_color", Color("#540237"))
 			specific_onLabel.add_theme_color_override("font_color", Color("#20CBD7"))
 			print("made it")
@@ -75,4 +82,5 @@ func _process(delta: float) -> void:
 			specific_onLabel.add_theme_color_override("font_color", Color("#064a4f"))
 			print("here")
 			game.can_have_timer = false
+			game.timer_on = false
 	pass

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 36200.0
-var PUSH_FORCE := 300.0
+var PUSH_FORCE := 400.0
 var MIN_PUSH_FORCE := 250.0
 const ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
