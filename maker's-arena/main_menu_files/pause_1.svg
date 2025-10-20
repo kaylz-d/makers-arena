@@ -1,0 +1,16 @@
+<svg width="44" height="52" viewBox="0 0 44 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 14C18 11.7909 16.2091 10 14 10C11.7909 10 10 11.7909 10 14V38C10 40.2091 11.7909 42 14 42C16.2091 42 18 40.2091 18 38V14Z" stroke="#220D96" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34 14C34 11.7909 32.2091 10 30 10C27.7909 10 26 11.7909 26 14V38C26 40.2091 27.7909 42 30 42C32.2091 42 34 40.2091 34 38V14Z" stroke="#220D96" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 10H10V42H18V10Z" stroke="#03FBFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34 10H26V42H34V10Z" stroke="#03FBFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<mask id="mask0_50_48" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="8" y="8" width="28" height="36">
+<path d="M18 10H10V42H18V10Z" stroke="#03FBFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34 10H26V42H34V10Z" stroke="#03FBFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</mask>
+<g mask="url(#mask0_50_48)">
+<path d="M-13.5 25V59L36 68.5L67 49L48.5 21.5L18.5 18.5L-13.5 25Z" fill="#FFF679" fill-opacity="0.25"/>
+<path d="M-18 32.5V66.5L31.5 76L62.5 56.5L44 29L14 26L-18 32.5Z" fill="#FFF679" fill-opacity="0.25"/>
+<path d="M-18 41.5V75.5L31.5 85L62.5 65.5L44 38L14 35L-18 41.5Z" fill="#FFF679" fill-opacity="0.25"/>
+<path d="M-18 48.5V82.5L31.5 92L62.5 72.5L44 45L14 42L-18 48.5Z" fill="#FFF679" fill-opacity="0.25"/>
+</g>
+</svg>
