@@ -3,8 +3,8 @@ class_name Player2 extends CharacterBody2D
 #@onready var my_node2d = $Node2D
 #@onready var my_collision = $CollisionPolygon2D
 
-var SPEED = 36200.0
-const BOT_SPEED = 22000.0
+#var SPEED = 36200.0
+var BOT_SPEED = 22000.0
 var PUSH_FORCE := 400.0
 var MIN_PUSH_FORCE := 200.0
 const ROTATION_SPEED := 5.2
@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 				print("solo mode is true from p2.gd")
 				MIN_PUSH_FORCE = 100.0
 				PUSH_FORCE = 180.0
-				SPEED = BOT_SPEED
+				game.PLAYER_2_SPEED = BOT_SPEED
 				
 				#var look_at_offset = Vector2(0, -20)
 				var look_at_offset = Vector2(0, 0)
@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
 						if distance_from_out <= 10.0 and distance_from_p1 <= safe_from_p1:
 							look_at(%OutArea2D.position)
 							rotation += deg_to_rad(180) * 2
-							input_velocity = direction_from_out * SPEED
+							input_velocity = direction_from_out * game.PLAYER_2_SPEED
 							dangerous = true
 						elif distance_from_out <= 15.0 and distance_from_p1 <= safe_from_p1:
 							look_at(%OutArea2D.position)
@@ -105,7 +105,7 @@ func _physics_process(delta: float) -> void:
 						look_at(%OutArea2D.position)
 						rotation += deg_to_rad(180) * 2
 						dangerous = true
-						input_velocity = direction_from_out * SPEED
+						input_velocity = direction_from_out * game.PLAYER_2_SPEED
 					elif distance_from_out <= 15.0:
 						#input_velocity = direction_from_out.normalized() * BOT_SPEED
 						look_at(%OutArea2D.position)
@@ -120,7 +120,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		MIN_PUSH_FORCE = 200.0
 		PUSH_FORCE = 300.0
-		SPEED = 36200.0
+		game.PLAYER_2_SPEED = 36200.0
 					
 	if game.can_have_timer:
 		if game.allow_p2_input:
@@ -130,9 +130,9 @@ func _physics_process(delta: float) -> void:
 				rotation += ROTATION_SPEED * delta
 		
 			if Input.is_action_pressed("up_p2"):
-				input_velocity = Vector2.UP.rotated(rotation) * SPEED # * delta
+				input_velocity = Vector2.UP.rotated(rotation) * game.PLAYER_2_SPEED # * delta
 			elif Input.is_action_pressed("down_p2"):
-				input_velocity = Vector2.UP.rotated(rotation) * -SPEED # * delta
+				input_velocity = Vector2.UP.rotated(rotation) * -game.PLAYER_2_SPEED # * delta
 			else:
 				input_velocity = Vector2.ZERO
 # there's defo some redundancies, maybe rewrite later
@@ -146,9 +146,9 @@ func _physics_process(delta: float) -> void:
 			rotation += ROTATION_SPEED * delta
 		
 		if Input.is_action_pressed("up_p2"):
-			input_velocity = Vector2.UP.rotated(rotation) * SPEED # * delta
+			input_velocity = Vector2.UP.rotated(rotation) * game.PLAYER_2_SPEED # * delta
 		elif Input.is_action_pressed("down_p2"):
-			input_velocity = Vector2.UP.rotated(rotation) * -SPEED # * delta
+			input_velocity = Vector2.UP.rotated(rotation) * -(game.PLAYER_2_SPEED) # * delta
 	
 	velocity = input_velocity * delta
 	
@@ -168,7 +168,7 @@ func _physics_process(delta: float) -> void:
 				var other := c.get_collider()
 				var normal := c.get_normal()
 				if other is CharacterBody2D:
-					var pushforce = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
+					var pushforce = (PUSH_FORCE * velocity.length() / (game.PLAYER_2_SPEED)) + MIN_PUSH_FORCE
 					other.global_position += -normal * pushforce * delta
 					#print("We did this instead") #in fact, we did do this (T_T)
 					#took so long to debug
@@ -230,3 +230,14 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 			
 			#var label = get_node("Winner/MarginContainer/CenterContainer/VBoxContainer/Result")
 			#label.text = "Player 1 Wins!"
+
+#func SPD_collected():
+	#game.PLAYER_2_SPEED = 52600.0
+	#collectible_controller.emit_signal("SPD_collected")
+
+
+func _on_spawn_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		if body.name == ("Player2"):
+			game.PLAYER_2_SPEED = 52600.0
+	pass # Replace with function body.

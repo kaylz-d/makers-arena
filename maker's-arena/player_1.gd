@@ -1,6 +1,5 @@
 class_name Player1 extends CharacterBody2D
 
-var SPEED = 36200.0
 var PUSH_FORCE := 400.0
 var MIN_PUSH_FORCE := 250.0
 const ROTATION_SPEED := 5.2
@@ -39,9 +38,9 @@ func _physics_process(delta: float) -> void:
 			rotation += ROTATION_SPEED * delta
 		
 		if Input.is_action_pressed("w"):
-			input_velocity = Vector2.UP.rotated(rotation) * SPEED # * delta
+			input_velocity = Vector2.UP.rotated(rotation) * game.PLAYER_1_SPEED # * delta
 		elif Input.is_action_pressed("s"):
-			input_velocity = Vector2.UP.rotated(rotation) * -SPEED # * delta
+			input_velocity = Vector2.UP.rotated(rotation) * -(game.PLAYER_1_SPEED) # * delta
 		else:
 			input_velocity = Vector2.ZERO
 	#else:
@@ -64,7 +63,7 @@ func _physics_process(delta: float) -> void:
 				var other := c.get_collider()
 				
 				if other is CharacterBody2D:
-					var pushforce = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
+					var pushforce = (PUSH_FORCE * velocity.length() / (game.PLAYER_1_SPEED)) + MIN_PUSH_FORCE
 					other.global_position += -normal * pushforce * delta
 					#print("We did this instead") #in fact, we did do this (T_T)
 					#took so long to debug
@@ -79,7 +78,7 @@ func _p1_reset_position() -> void:
 	position = Vector2(p1_xi, p1_yi)
 	rotation = 90
 	velocity = Vector2(0.0, 0.0)
-	SPEED = 36200.0
+	game.PLAYER_1_SPEED = 36200.0
 	
 	%Player2.position = Vector2(930.0, 400.0)
 	%Player2.velocity = Vector2(0.0,0.0)
@@ -114,5 +113,5 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	#pass # Replace with function body.
 
 func SPD_collected():
-	SPEED = 52600.0
+	game.PLAYER_1_SPEED = 52600.0
 	collectible_controller.emit_signal("SPD_collected")

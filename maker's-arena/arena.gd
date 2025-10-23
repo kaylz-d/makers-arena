@@ -11,6 +11,8 @@ var p2_score := 0
 #@onready var Player2 := %Player2
 #@onready var player_2 = preload("res://player_2.tscn")
 
+var SPD_scene = preload("res://collectibles/SPD.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -101,4 +103,17 @@ func _update_score() -> void:
 		##emit_signal("player_won", "PLAYER 2 WINS")
 		#get_tree().change_scene_to_file("Winner.tscn")
 	pass
+	
+func spawn_powerup() -> void:
+	var a_SPD_orb = SPD_scene.instantiate()
+	
+	var picked_x = randf_range(100.0, 1000.0)
+	var picked_y = randf_range(100.0, 500.0)
+	
+	if picked_x > 350.0 and picked_x < 760.0:
+		if picked_y > 100.0 and picked_y < 300.0 :
+			while picked_y > 100.0 and picked_y < 300.0:
+				picked_y = randf_range(100.0, 500.0)
+	
+	var picked_position = Vector2(picked_x, picked_y)
 	

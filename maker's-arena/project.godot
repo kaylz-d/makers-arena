@@ -22,8 +22,8 @@ tutorial="res://tutorial.gd"
 arena="*res://arena.gd"
 audio="*res://audio_stream_player.tscn"
 collectible_controller="*res://collectibles/collectible_controller.gd"
-player_1="*res://player_1.gd"
-player_2="*res://player_2.gd"
+player_1="res://player_1.gd"
+player_2="res://player_2.gd"
 
 [display]
 

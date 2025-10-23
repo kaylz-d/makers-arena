@@ -158,7 +158,17 @@ theme_override_font_sizes/font_size = 200
 text = "3"
 script = ExtResource("9_u21bi")
 
+[node name="Spawn" type="Area2D" parent="."]
+
+[node name="test_loc" type="TextureRect" parent="."]
+visible = false
+offset_left = 560.0
+offset_top = 300.0
+offset_right = 600.0
+offset_bottom = 340.0
+
 [connection signal="p2_score_changed" from="Player1" to="." method="_on_player_1_p_2_score_changed"]
 [connection signal="p1_score_changed" from="Player2" to="." method="_on_player_2_p_1_score_changed"]
 [connection signal="body_entered" from="Out_Area2D" to="Player1" method="_on_out_area_2d_body_entered"]
 [connection signal="body_entered" from="Out_Area2D" to="Player2" method="_on_out_area_2d_body_entered"]
+[connection signal="body_entered" from="Spawn" to="Player2" method="_on_spawn_body_entered"]

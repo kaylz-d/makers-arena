@@ -84,8 +84,7 @@ script = ExtResource("1_7i6b6")
 sprite_frames = SubResource("SpriteFrames_j4r3w")
 animation = &"shine"
 autoplay = "shine"
-frame = 5
-frame_progress = 0.962851
+frame_progress = 0.354079
 
 [node name="Area2D" type="Area2D" parent="."]
 
