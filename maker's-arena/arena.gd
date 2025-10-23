@@ -1,15 +1,44 @@
 extends Node
+# maybe in the future, try making the players as their own scenes
+# might need to use signals for interactions with the arena but it would be ok
+
+#@onready var Player2 = get_node("Player2")
+#@onready var Player2_Node2D = get_node("Player2/Node2D")
+#@onready var Player2_CollisionPolygon2D = get_node("Player2/CollisionPolygon2D")
 
 var p1_score := 0
 var p2_score := 0
+#@onready var Player2 := %Player2
+#@onready var player_2 = preload("res://player_2.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	print("Children of ", self.name, ":", get_children())
+	print("Player 2 exists?", has_node("Player2"))
+	# this works only after switching to the arena screen
+	
+	#print("Does Player 2 exist here?", has_node("/root/Player2"))
+	#print("Does Player 2 exist here?", has_node("Players/Player2"))
+	#print("Does Player 2 exist here?", has_node("res://player_2.tscn"))
+	#print("Does Player 2 exist here?", has_node("player_2"))
+	#var Player2 = get_node("Player2")
+	#var Player2_Node2D = get_node("Player2/Node2D")
+	#var Player2_CollisionPolygon2D = get_node("Player2/CollisionPolygon2D")
 	#var player1 = $PLayer1
 	#var player2 = $Player2
 	
-	#player1.connect("p2_score_changed", Callable(self, "_on_p2_score_changed"))
-	#player2.connect("p1_score_changed", Callable(self, "_on_p1_score_changed"))
+	
+	#if game.solo_mode:
+		#Player2.rotation = 0.0 # tricky.
+		#Player2_Node2D.rotation = -90.0
+		#Player2_CollisionPolygon2D.rotation = -90.0
+	#else:
+		#Player2.rotation = -90.0
+		#Player2_Node2D.rotation = 0
+		#Player2_CollisionPolygon2D.rotation = 0
+		
+	
 	game._start_timer()
 	pass # Replace with function body.
 	

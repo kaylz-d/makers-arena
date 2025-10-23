@@ -21,8 +21,8 @@ bounce = 0.5
 script = ExtResource("1_ml6qp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1152.0
+offset_bottom = 648.0
 texture = ExtResource("1_bcb0y")
 
 [node name="Player1" type="CharacterBody2D" parent="."]

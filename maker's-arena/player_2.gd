@@ -18,9 +18,15 @@ const p2_yi := 400.0
 
 var just_reset = false
 
-#func _ready() -> void:
-	#if !game.solo_mode:
-		#rotation = 0.0
+func _ready() -> void:
+	if game.solo_mode:
+		rotation = 0.0 # tricky.
+		$Node2D.rotation = -90.0
+		$CollisionPolygon2D.rotation = -90.0
+	else:
+		rotation = -90.0
+		$Node2D.rotation = 0
+		$CollisionPolygon2D.rotation = 0
 
 func _good_to_bounce() -> void:
 	if is_on_ceiling() or is_on_wall() or is_on_floor():
@@ -38,6 +44,7 @@ func _physics_process(delta: float) -> void:
 		#print("but not now")
 		#input_velocity = Vector2.ZERO
 	if game.solo_mode:
+				
 				print("solo mode is true from p2.gd")
 				MIN_PUSH_FORCE = 100.0
 				PUSH_FORCE = 180.0
@@ -178,11 +185,18 @@ func _p2_reset_position() -> void:
 	just_reset = true
 	position = Vector2(p2_xi, p2_yi)
 	print(position)
-	rotation = 0.0 # tricky.
+	if game.solo_mode:
+		rotation = 0.0 # tricky.
+		get_node("Node2D").rotation = -90.0
+		get_node("CollisionPolygon2D").rotation = -90.0
+	else:
+		rotation = -90.0
+		get_node("Node2D").rotation = 0
+		get_node("CollisionPolygon2D").rotation = 0
 	velocity = Vector2(0.0, 0.0)
 	
 	%Player1.position = Vector2(220.0, 400.0)
-	%Player1.rotation = 0.0
+	%Player1.rotation = 90
 	%Player1.velocity = Vector2(0.0,0.0)
 	
 	
