@@ -1,4 +1,7 @@
-extends CharacterBody2D
+class_name Player2 extends CharacterBody2D
+
+#@onready var my_node2d = $Node2D
+#@onready var my_collision = $CollisionPolygon2D
 
 var SPEED = 36200.0
 const BOT_SPEED = 22000.0
@@ -19,14 +22,23 @@ const p2_yi := 400.0
 var just_reset = false
 
 func _ready() -> void:
-	if game.solo_mode:
-		rotation = 0.0 # tricky.
-		$Node2D.rotation = -90.0
-		$CollisionPolygon2D.rotation = -90.0
-	else:
-		rotation = -90.0
-		$Node2D.rotation = 0
-		$CollisionPolygon2D.rotation = 0
+	
+	if has_node("Node2D"):
+		var my_node2d = get_node("Node2D")
+		var my_collision = get_node("CollisionPolygon2D")
+	
+		if game.solo_mode:
+			rotation = 0.0 # tricky.
+			my_node2d.rotation = -90.0
+			my_collision.rotation = -90.0
+		else:
+			rotation = -90.0
+			my_node2d.rotation = 0.0
+			my_collision.rotation = 0.0
+	
+	var player2 = find_child("Node2D")
+	print(player2)
+	# only exists after arena is open
 
 func _good_to_bounce() -> void:
 	if is_on_ceiling() or is_on_wall() or is_on_floor():
@@ -191,8 +203,8 @@ func _p2_reset_position() -> void:
 		get_node("CollisionPolygon2D").rotation = -90.0
 	else:
 		rotation = -90.0
-		get_node("Node2D").rotation = 0
-		get_node("CollisionPolygon2D").rotation = 0
+		get_node("Node2D").rotation = 0.0
+		get_node("CollisionPolygon2D").rotation = 0.0
 	velocity = Vector2(0.0, 0.0)
 	
 	%Player1.position = Vector2(220.0, 400.0)

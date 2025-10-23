@@ -1,6 +1,6 @@
-extends CharacterBody2D
+class_name Player1 extends CharacterBody2D
 
-const SPEED = 36200.0
+var SPEED = 36200.0
 var PUSH_FORCE := 400.0
 var MIN_PUSH_FORCE := 250.0
 const ROTATION_SPEED := 5.2
@@ -77,12 +77,21 @@ func _physics_process(delta: float) -> void:
 
 func _p1_reset_position() -> void:
 	position = Vector2(p1_xi, p1_yi)
-	rotation = 0.0
+	rotation = 90
 	velocity = Vector2(0.0, 0.0)
+	SPEED = 36200.0
 	
 	%Player2.position = Vector2(930.0, 400.0)
-	%Player2.rotation = 0.0
 	%Player2.velocity = Vector2(0.0,0.0)
+	
+	if game.solo_mode:
+		%Player2.rotation = 0.0
+		%Player2/Node2D.rotation = -90.0
+		%Player2/CollisionPolygon2D.rotation = -90.0
+	else:
+		%Player2.rotation = -90.0
+		%Player2/Node2D.rotation = 0.0
+		%Player2/CollisionPolygon2D.rotation = 0.0
 
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	var num_rounds = game.num_rounds
@@ -103,3 +112,7 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 # idk i think this appeared when i connected from arena
 #func _on_arena_p_1_score_changed(_p1_update_score: Variant):
 	#pass # Replace with function body.
+
+func SPD_collected():
+	SPEED = 52600.0
+	collectible_controller.emit_signal("SPD_collected")
