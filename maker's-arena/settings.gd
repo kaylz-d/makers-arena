@@ -1,5 +1,7 @@
 extends Node
 
+####################### IDEA: SWITCH "W" and "S" around so it's like more intuitive? lol
+
 var current_num_rounds = game.num_rounds
 var current_selection = 0
 
@@ -75,23 +77,23 @@ func _process(delta: float) -> void:
 		
 	if current_selection == 0:
 		selection_arrow.position = Vector2(80.0, 214.0)
-		if Input.is_action_just_pressed("w"):
+		if Input.is_action_just_pressed("s"):
 			current_num_rounds += 1
 			print("adding a round")
 			game.num_rounds = current_num_rounds
 			_update_num_rounds_label()
-		if Input.is_action_just_pressed("s"):
+		if Input.is_action_just_pressed("w"):
 			if current_num_rounds > 1:
 				current_num_rounds -= 1
 				game.num_rounds = current_num_rounds
 				_update_num_rounds_label()
 	elif current_selection == 1: # SOLO MODE
 		selection_arrow.position = Vector2(80.0, 284.0)
-		if Input.is_action_just_pressed("w"):
+		if Input.is_action_just_pressed("s"):
 			game.solo_mode = false
 			offLabel.add_theme_color_override("font_color", Color("#064a4f"))
 			onLabel.add_theme_color_override("font_color", Color("#f979be"))
-		if Input.is_action_just_pressed("s"):
+		if Input.is_action_just_pressed("w"):
 			game.solo_mode = true
 			print("solo mode is true")
 			offLabel.add_theme_color_override("font_color", Color("#20CBD7"))
@@ -100,14 +102,14 @@ func _process(delta: float) -> void:
 	elif current_selection == 2: #TIMER
 		selection_arrow.position = Vector2(80.0, 354.0)
 		
-		if Input.is_action_just_pressed("s"):
+		if Input.is_action_just_pressed("w"):
 			#game.timer_override = true
 			game.can_have_timer = true
 			game.timer_on = true
 			specific_offLabel.add_theme_color_override("font_color", Color("#540237"))
 			specific_onLabel.add_theme_color_override("font_color", Color("#20CBD7"))
 			print("made it")
-		if Input.is_action_just_pressed("w"):
+		if Input.is_action_just_pressed("s"):
 			#game.timer_override = false
 			specific_offLabel.add_theme_color_override("font_color", Color("#f979be"))
 			specific_onLabel.add_theme_color_override("font_color", Color("#064a4f"))
@@ -116,12 +118,12 @@ func _process(delta: float) -> void:
 			game.timer_on = false
 	elif current_selection == 3:
 		selection_arrow.position = Vector2(80.0, 424.0)
-		if Input.is_action_just_pressed("s"):
+		if Input.is_action_just_pressed("w"):
 			game.music_on = true
 			musicOFF.add_theme_color_override("font_color", Color("#540237"))
 			musicON.add_theme_color_override("font_color", Color("#20CBD7"))
 			print("music on")
-		if Input.is_action_just_pressed("w"):
+		if Input.is_action_just_pressed("s"):
 			game.music_on = false
 			musicOFF.add_theme_color_override("font_color", Color("#f979be"))
 			musicON.add_theme_color_override("font_color", Color("#064a4f"))

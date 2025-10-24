@@ -16,8 +16,10 @@ var SPD_scene = preload("res://collectibles/SPD.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	print("Children of ", self.name, ":", get_children())
-	print("Player 2 exists?", has_node("Player2"))
+	game.current_scene = "Arena"
+	
+	#print("Children of ", self.name, ":", get_children())
+	#print("Player 2 exists?", has_node("Player2"))
 	# this works only after switching to the arena screen
 	
 	#print("Does Player 2 exist here?", has_node("/root/Player2"))
@@ -72,6 +74,9 @@ func _process(_delta: float) -> void:
 		#if Input.is_action_just_pressed("esc"):
 			#get_tree().change_scene_to_file("../Tutorial")
 			#print("this runs")
+	if Input.is_action_just_pressed("space"):
+		return
+	
 	pass
 
 #func _input(InputEvent) -> void:
@@ -105,6 +110,12 @@ func _update_score() -> void:
 	pass
 	
 func spawn_powerup() -> void:
+	print("spawn_powerup() running")
+	var spawner = get_node("Spawn")
+	
+	if spawner.get_child_count() > 0:
+		return
+	
 	var a_SPD_orb = SPD_scene.instantiate()
 	
 	var picked_x = randf_range(100.0, 1000.0)
@@ -116,4 +127,10 @@ func spawn_powerup() -> void:
 				picked_y = randf_range(100.0, 500.0)
 	
 	var picked_position = Vector2(picked_x, picked_y)
-	
+	a_SPD_orb.position = picked_position
+	spawner.add_child(a_SPD_orb)
+
+
+func _on_powerup_timer_timeout() -> void:
+	spawn_powerup()
+	print("shoulda spawned")

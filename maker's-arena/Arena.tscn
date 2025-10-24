@@ -159,6 +159,11 @@ text = "3"
 script = ExtResource("9_u21bi")
 
 [node name="Spawn" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Powerup_Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
 
 [node name="test_loc" type="TextureRect" parent="."]
 visible = false
@@ -172,3 +177,4 @@ offset_bottom = 340.0
 [connection signal="body_entered" from="Out_Area2D" to="Player1" method="_on_out_area_2d_body_entered"]
 [connection signal="body_entered" from="Out_Area2D" to="Player2" method="_on_out_area_2d_body_entered"]
 [connection signal="body_entered" from="Spawn" to="Player2" method="_on_spawn_body_entered"]
+[connection signal="timeout" from="Powerup_Timer" to="." method="_on_powerup_timer_timeout"]

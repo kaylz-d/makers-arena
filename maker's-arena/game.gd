@@ -11,6 +11,7 @@ var solo_mode = false
 var timer_on = false
 var can_have_timer = true
 var music_on = true
+var current_scene = ""
 
 var PLAYER_1_SPEED = 36200.0
 var PLAYER_2_SPEED = 36200.0

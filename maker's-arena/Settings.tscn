@@ -122,7 +122,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 20
-text = "(W)"
+text = "(S)"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/ALL_SETTINGS/Number_Rounds/HBoxContainer"]
 layout_mode = 2
@@ -142,7 +142,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 20
-text = "(S)"
+text = "(W)"
 
 [node name="Solo_Mode" type="MarginContainer" parent="MarginContainer/MarginContainer/ALL_SETTINGS"]
 layout_mode = 2
@@ -177,7 +177,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 20
-text = "(W)"
+text = "(S)"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/ALL_SETTINGS/Solo_Mode/HBoxContainer"]
 layout_mode = 2
@@ -197,7 +197,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 20
-text = "(S)"
+text = "(W)"
 
 [node name="solo mode not working" type="Label" parent="MarginContainer/MarginContainer/ALL_SETTINGS"]
 visible = false
@@ -240,7 +240,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 20
-text = "(W)"
+text = "(S)"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/ALL_SETTINGS/Timer/HBoxContainer"]
 layout_mode = 2
@@ -260,7 +260,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 20
-text = "(S)"
+text = "(W)"
 
 [node name="Volume" type="MarginContainer" parent="MarginContainer/MarginContainer/ALL_SETTINGS"]
 layout_mode = 2
@@ -295,7 +295,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 20
-text = "(W)"
+text = "(S)"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/ALL_SETTINGS/Volume/HBoxContainer"]
 layout_mode = 2
@@ -315,7 +315,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2fv1l")
 theme_override_font_sizes/font_size = 20
-text = "(S)"
+text = "(W)"
 
 [node name="Selection_arrow" type="Label" parent="."]
 offset_left = 80.0

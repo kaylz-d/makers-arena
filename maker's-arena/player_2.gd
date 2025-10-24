@@ -3,6 +3,8 @@ class_name Player2 extends CharacterBody2D
 #@onready var my_node2d = $Node2D
 #@onready var my_collision = $CollisionPolygon2D
 
+@onready var spawner = get_parent().get_node("Spawn")
+
 #var SPEED = 36200.0
 var BOT_SPEED = 22000.0
 var PUSH_FORCE := 400.0
@@ -22,7 +24,7 @@ const p2_yi := 400.0
 var just_reset = false
 
 func _ready() -> void:
-	
+
 	if has_node("Node2D"):
 		var my_node2d = get_node("Node2D")
 		var my_collision = get_node("CollisionPolygon2D")
@@ -36,8 +38,8 @@ func _ready() -> void:
 			my_node2d.rotation = 0.0
 			my_collision.rotation = 0.0
 	
-	var player2 = find_child("Node2D")
-	print(player2)
+	#var player2 = find_child("Node2D")
+	#print(player2)
 	# only exists after arena is open
 
 func _good_to_bounce() -> void:
@@ -235,9 +237,21 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	#game.PLAYER_2_SPEED = 52600.0
 	#collectible_controller.emit_signal("SPD_collected")
 
-
 func _on_spawn_body_entered(body: Node2D) -> void:
+	var spawner = get_parent().get_node("Spawn")
+	
 	if body is CharacterBody2D:
 		if body.name == ("Player2"):
 			game.PLAYER_2_SPEED = 52600.0
+			spawner.remove_child(get_node("SPD"))
+			("this worked")
+	elif body is Area2D:
+		if body.name == ("Spawn"):
+			game.PLAYER_2_SPEED = 52600.0
+			remove_child(%Spawn)
+			("Spawn worked")
+		elif body.name == ("SPD"):
+			game.PLAYER_2_SPEED = 52600.0
+			remove_child(%Spawn)
+			("SPD worked")
 	pass # Replace with function body.
