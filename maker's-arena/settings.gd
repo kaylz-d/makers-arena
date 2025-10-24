@@ -29,6 +29,7 @@ var current_selection = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	game.current_scene = "Settings"
 	current_num_rounds = game.num_rounds
 	_update_num_rounds_label()
 	

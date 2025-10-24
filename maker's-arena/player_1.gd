@@ -94,18 +94,20 @@ func _p1_reset_position() -> void:
 
 func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	var num_rounds = game.num_rounds
-	if body is CharacterBody2D:
-		if body.name == ("Player1"):
-			score += 1
-			emit_signal("p2_score_changed", score)
-			_p1_reset_position()
-			game._start_timer()
-			#print("P1 is OUT")
-			#NEED TO INCREMENT POINTS AND UPDATE SCOREBOARD FIRST
-			
-			if score == num_rounds:
-				game.result_text = "PLAYER 2 WINS"
-				get_tree().change_scene_to_file("res://Winner.tscn")
+	if !game.timer_on:
+		if body is CharacterBody2D:
+			if body.name == ("Player1"):
+				score += 1
+				emit_signal("p2_score_changed", score)
+				_p1_reset_position()
+				if game.can_have_timer:
+					game._start_timer()
+				#print("P1 is OUT")
+				#NEED TO INCREMENT POINTS AND UPDATE SCOREBOARD FIRST
+				
+				if score == num_rounds:
+					game.result_text = "PLAYER 2 WINS"
+					get_tree().change_scene_to_file("res://Winner.tscn")
 			
 
 # idk i think this appeared when i connected from arena
@@ -113,5 +115,6 @@ func _on_out_area_2d_body_entered(body: Node2D) -> void:
 	#pass # Replace with function body.
 
 func SPD_collected():
-	game.PLAYER_1_SPEED = 52600.0
+	#game.PLAYER_1_SPEED = 82600.0
+	print("function SPD_collected() is being called directly from player")
 	collectible_controller.emit_signal("SPD_collected")

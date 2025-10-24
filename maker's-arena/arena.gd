@@ -15,7 +15,7 @@ var SPD_scene = preload("res://collectibles/SPD.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	print("this is readying tOOO MUCH")
 	game.current_scene = "Arena"
 	
 	#print("Children of ", self.name, ":", get_children())
@@ -74,8 +74,8 @@ func _process(_delta: float) -> void:
 		#if Input.is_action_just_pressed("esc"):
 			#get_tree().change_scene_to_file("../Tutorial")
 			#print("this runs")
-	if Input.is_action_just_pressed("space"):
-		return
+	#if Input.is_action_just_pressed("space"):
+		#return
 	
 	pass
 
@@ -134,3 +134,17 @@ func spawn_powerup() -> void:
 func _on_powerup_timer_timeout() -> void:
 	spawn_powerup()
 	print("shoulda spawned")
+	
+func SPD_collected(player: String):
+	
+	#var a_SPD_orb2 = %Spawn.get_child(0)
+	#not needed cuz child is already gone
+	
+	if player == ("Player1"):
+		game.PLAYER_1_SPEED += 8000.0
+		#%Spawn.remove_child(a_SPD_orb2)
+	elif player == ("Player2"):
+		game.PLAYER_2_SPEED += 8000.0
+		#%Spawn.remove_child(a_SPD_orb2)
+		
+#WORKS!!

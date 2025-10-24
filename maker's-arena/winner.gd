@@ -14,10 +14,10 @@ func _process(delta: float) -> void:
 	
 func _input(InputEvent) -> void:
 	if Input.is_action_just_pressed("space"):
-		get_tree().change_scene_to_file("res://Arena.tscn")
+		game.change_scene("res://Arena.tscn")
 	elif Input.is_action_just_pressed("esc"):
 		# yo i don't think this is working rn
-		get_tree().change_scene_to_file("res://MainMenu.tscn")
+		game.change_scene("res://MainMenu.tscn")
 
 
 #func _on_arena_player_won(winner: Variant) -> void:

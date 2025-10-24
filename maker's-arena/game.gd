@@ -13,11 +13,13 @@ var can_have_timer = true
 var music_on = true
 var current_scene = ""
 
-var PLAYER_1_SPEED = 36200.0
-var PLAYER_2_SPEED = 36200.0
+var PLAYER_1_SPEED = 46200.0
+var PLAYER_2_SPEED = 46200.0
 
 signal player_won(winner)
 signal change_num_rounds(new_num)
+
+# 2do: figure out why arena keeps being autoloaded
 
 func _ready():
 	if music_on:
@@ -45,7 +47,7 @@ func _start_timer() -> void:
 		#get_node("../Arena/CenterContainer/TimerLabel").display = true
 		allow_arena_input = false
 		allow_p2_input = false
-		print("timer started")
+		print("timer started from game.gd")
 		# i can definitely redo this with signals...
 	else:
 		allow_arena_input = true
@@ -57,3 +59,11 @@ func _on_timer_timeout():
 	timer_on = false
 	#get_node("/root/Arena/CenterContainer/TimerLabel").display = false
 	print("timer_ended!")
+
+func change_scene(scene_path: String) -> void:
+	var new_scene = load(scene_path).instantiate()
+	
+	if current_scene:
+		current_scene = new_scene
+	current_scene = new_scene
+	get_tree().root.add_child(current_scene)

@@ -78,6 +78,7 @@ animations = [{
 radius = 23.5372
 
 [node name="SPD" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_7i6b6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
