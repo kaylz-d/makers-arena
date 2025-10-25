@@ -15,11 +15,16 @@ var current_scene = ""
 
 var PLAYER_1_SPEED = 46200.0
 var PLAYER_1_ROT_SPEED = 5.2
+var PLAYER_1_PUSH_FORCE = 400.0
+
 var PLAYER_2_SPEED = 46200.0
 var PLAYER_2_ROT_SPEED = 5.2
+var PLAYER_2_PUSH_FORCE = 400.0
 
-signal player_won(winner)
-signal change_num_rounds(new_num)
+var last_powerup = ""
+
+#signal player_won(winner)
+#signal change_num_rounds(new_num)
 
 # 2do: figure out why arena keeps being autoloaded
 

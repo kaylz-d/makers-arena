@@ -1,6 +1,6 @@
 class_name Player1 extends CharacterBody2D
 
-var PUSH_FORCE := 400.0
+#var PUSH_FORCE := 400.0
 var MIN_PUSH_FORCE := 250.0
 #var ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
@@ -22,13 +22,13 @@ func _good_to_bounce() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	print("Player 1 speed: " + str(game.PLAYER_1_SPEED))
+	#print("Player 1 speed: " + str(game.PLAYER_1_SPEED))
 	
 	if game.solo_mode:
-		PUSH_FORCE = 400.0
+		#game.PLAYER_1_PUSH_FORCE = 400.0
 		MIN_PUSH_FORCE = 300.0
 	else:
-		PUSH_FORCE = 300.0
+		#game.PLAYER_1_PUSH_FORCE = 300.0
 		MIN_PUSH_FORCE = 250.0
 	
 	var input_velocity := Vector2.ZERO
@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 				var other := c.get_collider()
 				
 				if other is CharacterBody2D:
-					var pushforce = (PUSH_FORCE * velocity.length() / (game.PLAYER_1_SPEED)) + MIN_PUSH_FORCE
+					var pushforce = (game.PLAYER_1_PUSH_FORCE * velocity.length() / (game.PLAYER_1_SPEED)) + MIN_PUSH_FORCE
 					other.global_position += -normal * pushforce * delta
 					#print("We did this instead") #in fact, we did do this (T_T)
 					#took so long to debug

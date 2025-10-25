@@ -12,6 +12,7 @@ var p2_score := 0
 #@onready var player_2 = preload("res://player_2.tscn")
 
 var SPD_scene = preload("res://collectibles/SPD.tscn")
+var FORCE_scene = preload("res://collectibles/FORCE.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -109,13 +110,16 @@ func _update_score() -> void:
 		#get_tree().change_scene_to_file("Winner.tscn")
 	pass
 
-func roll_random_orb(the_orb: PackedScene):
-	var generate_num := randi_range(0, 1)
+func roll_random_orb() -> PackedScene:
+	var generate_num := randi_range(0, 2)
 	if generate_num == 0:
-		the_orb = SPD_scene
+		print("generated this fr: " + str(generate_num))
+		game.last_powerup = "FORCE"
+		return FORCE_scene
 	else:
-		#the_orb = SPD
-		print("come back to line 118")
+		print("ELSE we generated this fr: " + str(generate_num))
+		game.last_powerup = "SPD"
+		return SPD_scene
 
 func spawn_powerup() -> void:
 	print("spawn_powerup() running")
@@ -124,7 +128,7 @@ func spawn_powerup() -> void:
 	if spawner.get_child_count() > 0:
 		return
 	
-	var a_SPD_orb = SPD_scene.instantiate()
+	var a_random_orb = roll_random_orb().instantiate()
 	
 	var picked_x = randf_range(100.0, 1000.0)
 	var picked_y = randf_range(100.0, 500.0)
@@ -135,8 +139,8 @@ func spawn_powerup() -> void:
 				picked_y = randf_range(100.0, 500.0)
 	
 	var picked_position = Vector2(picked_x, picked_y)
-	a_SPD_orb.position = picked_position
-	spawner.add_child(a_SPD_orb)
+	a_random_orb.position = picked_position
+	spawner.add_child(a_random_orb)
 
 
 func _on_powerup_timer_timeout() -> void:
@@ -158,3 +162,14 @@ func SPD_collected(player: String):
 		#%Spawn.remove_child(a_SPD_orb2)
 		
 #WORKS!!
+
+func FORCE_collected(player: String):
+	# ok i think it's much easier to
+	# just make the script a class
+	# and then refer to it this way
+	if player == ("Player1"):
+		game.PLAYER_1_PUSH_FORCE += 300.0
+		print("player 1 force: " + str(game.PLAYER_1_PUSH_FORCE))
+	elif player == ("Player2"):
+		game.PLAYER_2_PUSH_FORCE += 300.0
+		print("player 2 force: " + str(game.PLAYER_2_PUSH_FORCE))

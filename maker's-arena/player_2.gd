@@ -7,7 +7,7 @@ class_name Player2 extends CharacterBody2D
 
 #var SPEED = 36200.0
 var BOT_SPEED = 32000.0
-var PUSH_FORCE := 400.0
+#var PUSH_FORCE := 400.0
 var MIN_PUSH_FORCE := 200.0
 #var ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
@@ -23,7 +23,7 @@ const p2_yi := 400.0
 
 var just_reset = false
 
-func _ready() -> void:
+func _ready() -> void:	
 
 	if has_node("Node2D"):
 		var my_node2d = get_node("Node2D")
@@ -50,7 +50,7 @@ func _good_to_bounce() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	print("Player 2 Speed: " + str(game.PLAYER_2_SPEED))
+	#print("Player 2 Speed: " + str(game.PLAYER_2_SPEED))
 	
 	if game.current_scene == "Arena":
 		var input_velocity := Vector2.ZERO
@@ -65,8 +65,12 @@ func _physics_process(delta: float) -> void:
 					
 					print("solo mode is true from p2.gd")
 					MIN_PUSH_FORCE = 100.0
-					PUSH_FORCE = 180.0
+					game.PLAYER_2_PUSH_FORCE = 180.0
 					game.PLAYER_2_SPEED = BOT_SPEED
+					
+					# SOLO MODE IS BROKEN HERE AGAIN BAIIIIII
+					# the % nodes aren't working (T_T) i get the error that they're null
+					# idk whyyyy
 					
 					#var look_at_offset = Vector2(0, -20)
 					var look_at_offset = Vector2(0, 0)
@@ -125,7 +129,7 @@ func _physics_process(delta: float) -> void:
 							input_velocity = -transform.x * BOT_SPEED
 		else:
 			MIN_PUSH_FORCE = 200.0
-			PUSH_FORCE = 300.0
+			game.PLAYER_2_PUSH_FORCE = 300.0
 			#game.PLAYER_2_SPEED = 36200.0
 						
 		if game.can_have_timer:
@@ -174,7 +178,7 @@ func _physics_process(delta: float) -> void:
 					var other := c.get_collider()
 					var normal := c.get_normal()
 					if other is CharacterBody2D:
-						var pushforce = (PUSH_FORCE * velocity.length() / (game.PLAYER_2_SPEED)) + MIN_PUSH_FORCE
+						var pushforce = (game.PLAYER_2_PUSH_FORCE * velocity.length() / (game.PLAYER_2_SPEED)) + MIN_PUSH_FORCE
 						other.global_position += -normal * pushforce * delta
 						#print("We did this instead") #in fact, we did do this (T_T)
 						#took so long to debug
