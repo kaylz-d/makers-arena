@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c20vjg1ee4k4f"
+path="res://.godot/imported/mind-bender-2_Please credit as_Mind Bender 2 by Eric Matyas Soundimage.org.mp3-9c941022f050f217738401916e337b6d.mp3str"
+
+[deps]
+
+source_file="res://audio/mind-bender-2_Please credit as_Mind Bender 2 by Eric Matyas Soundimage.org.mp3"
+dest_files=["res://.godot/imported/mind-bender-2_Please credit as_Mind Bender 2 by Eric Matyas Soundimage.org.mp3-9c941022f050f217738401916e337b6d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

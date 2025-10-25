@@ -9,7 +9,7 @@ class_name Player2 extends CharacterBody2D
 var BOT_SPEED = 32000.0
 var PUSH_FORCE := 400.0
 var MIN_PUSH_FORCE := 200.0
-const ROTATION_SPEED := 5.2
+#var ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
 var bounce_timer := 0.0
 var good_to_bounce
@@ -49,6 +49,9 @@ func _good_to_bounce() -> void:
 		good_to_bounce = false
 
 func _physics_process(delta: float) -> void:
+	
+	print("Player 2 Speed: " + str(game.PLAYER_2_SPEED))
+	
 	if game.current_scene == "Arena":
 		var input_velocity := Vector2.ZERO
 		
@@ -123,14 +126,14 @@ func _physics_process(delta: float) -> void:
 		else:
 			MIN_PUSH_FORCE = 200.0
 			PUSH_FORCE = 300.0
-			game.PLAYER_2_SPEED = 36200.0
+			#game.PLAYER_2_SPEED = 36200.0
 						
 		if game.can_have_timer:
 			if game.allow_p2_input:
 				if Input.is_action_pressed("left_p2"):
-					rotation -= ROTATION_SPEED * delta
+					rotation -= game.PLAYER_2_ROT_SPEED * delta
 				if Input.is_action_pressed("right_p2"):
-					rotation += ROTATION_SPEED * delta
+					rotation += game.PLAYER_2_ROT_SPEED * delta
 			
 				if Input.is_action_pressed("up_p2"):
 					input_velocity = Vector2.UP.rotated(rotation) * game.PLAYER_2_SPEED # * delta
@@ -144,9 +147,9 @@ func _physics_process(delta: float) -> void:
 			game.allow_p2_input = true
 			game.allow_arena_input = true
 			if Input.is_action_pressed("left_p2"):
-				rotation -= ROTATION_SPEED * delta
+				rotation -= game.PLAYER_2_ROT_SPEED * delta
 			if Input.is_action_pressed("right_p2"):
-				rotation += ROTATION_SPEED * delta
+				rotation += game.PLAYER_2_ROT_SPEED * delta
 			
 			if Input.is_action_pressed("up_p2"):
 				input_velocity = Vector2.UP.rotated(rotation) * game.PLAYER_2_SPEED # * delta

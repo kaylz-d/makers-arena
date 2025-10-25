@@ -108,7 +108,15 @@ func _update_score() -> void:
 		##emit_signal("player_won", "PLAYER 2 WINS")
 		#get_tree().change_scene_to_file("Winner.tscn")
 	pass
-	
+
+func roll_random_orb(the_orb: PackedScene):
+	var generate_num := randi_range(0, 1)
+	if generate_num == 0:
+		the_orb = SPD_scene
+	else:
+		#the_orb = SPD
+		print("come back to line 118")
+
 func spawn_powerup() -> void:
 	print("spawn_powerup() running")
 	var spawner = get_node("Spawn")
@@ -142,9 +150,11 @@ func SPD_collected(player: String):
 	
 	if player == ("Player1"):
 		game.PLAYER_1_SPEED += 8000.0
+		game.PLAYER_1_ROT_SPEED += 0.5
 		#%Spawn.remove_child(a_SPD_orb2)
 	elif player == ("Player2"):
 		game.PLAYER_2_SPEED += 8000.0
+		game.PLAYER_2_ROT_SPEED += 0.5
 		#%Spawn.remove_child(a_SPD_orb2)
 		
 #WORKS!!

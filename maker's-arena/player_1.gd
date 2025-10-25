@@ -2,7 +2,7 @@ class_name Player1 extends CharacterBody2D
 
 var PUSH_FORCE := 400.0
 var MIN_PUSH_FORCE := 250.0
-const ROTATION_SPEED := 5.2
+#var ROTATION_SPEED := 5.2
 var bounce_strength := 0.6
 var bounce_timer := 0.0
 var good_to_bounce
@@ -22,6 +22,8 @@ func _good_to_bounce() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	print("Player 1 speed: " + str(game.PLAYER_1_SPEED))
+	
 	if game.solo_mode:
 		PUSH_FORCE = 400.0
 		MIN_PUSH_FORCE = 300.0
@@ -33,9 +35,9 @@ func _physics_process(delta: float) -> void:
 	
 	if game.allow_arena_input:
 		if Input.is_action_pressed("a"):
-			rotation -= ROTATION_SPEED * delta
+			rotation -= game.PLAYER_1_ROT_SPEED * delta
 		if Input.is_action_pressed("d"):
-			rotation += ROTATION_SPEED * delta
+			rotation += game.PLAYER_1_ROT_SPEED * delta
 		
 		if Input.is_action_pressed("w"):
 			input_velocity = Vector2.UP.rotated(rotation) * game.PLAYER_1_SPEED # * delta

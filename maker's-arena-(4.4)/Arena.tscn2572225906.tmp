@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3 uid="uid://ct4u23oa17xvj"]
+
+[ext_resource type="Texture2D" uid="uid://dljigcw6pw0ek" path="res://arena_files/arena_BG.svg" id="1_bcb0y"]
+[ext_resource type="Script" uid="uid://co6bvxg62owkc" path="res://arena.gd" id="1_ml6qp"]
+[ext_resource type="Texture2D" uid="uid://sue4s13k60tg" path="res://arena_files/yellow bot.svg" id="2_u45fm"]
+[ext_resource type="Script" uid="uid://be47pqy1bi6me" path="res://player_1.gd" id="2_vbyki"]
+[ext_resource type="Script" uid="uid://32mpyf5dfxjw" path="res://player_2.gd" id="4_jycnn"]
+[ext_resource type="Texture2D" uid="uid://daywj3fkyilub" path="res://arena_files/blue bot.svg" id="4_uj4qe"]
+[ext_resource type="Texture2D" uid="uid://bbl5w0146fl2i" path="res://images/settings_icon.svg" id="7_tu31c"]
+[ext_resource type="FontFile" uid="uid://bmba2w5glokwx" path="res://fonts/fot-yuruka-std.ttf" id="8_u21bi"]
+
+[node name="Arena" type="Node"]
+script = ExtResource("1_ml6qp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_bcb0y")
+
+[node name="Player1" type="CharacterBody2D" parent="."]
+position = Vector2(220, 400)
+collision_layer = 3
+script = ExtResource("2_vbyki")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+texture = ExtResource("2_u45fm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player1"]
+polygon = PackedVector2Array(-49, -61, -15, -56, 12, -56, 44, -62, 52, -56, 53, 11, 76, 11, 84, 18, 84, 55, 77, 61, -78, 61, -85, 54, -84, 18, -76, 11, -54, 11, -54, -55)
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+position = Vector2(930, 400)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_jycnn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+texture = ExtResource("4_uj4qe")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player2"]
+polygon = PackedVector2Array(-51, -60, -39, -62, -14, -57, 14, -57, 37, -62, 52, -58, 54, -50, 53, 11, 79, 12, 84, 18, 84, 54, 76, 62, -77, 61, -83, 54, -83, 17, -75, 11, -53, 11, -54, -55)
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions"]
+polygon = PackedVector2Array(84, 57, 94, 49, 1055, 50, 1063, 57, 1061, 590, 1056, 596, 95, 596, 90, 592, 90, 66, -4, 36, -67, 124, -35, 626, 9, 714, 1195, 683, 1229, 623, 1198, -99, 583, -159, -28, -145, -101, 2, -71, 94, -13, 40, -4, 34, 89, 65, 90, 65, 90, 56)
+
+[node name="Out_Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Out_Area2D"]
+position = Vector2(230, 52)
+scale = Vector2(0.599722, 0.586371)
+polygon = PackedVector2Array(428, 70, 428, 184, 429, 201, 469, 241, 556, 269, 625, 264, 685, 239, 718, 206, 727, 182, 726, 66)
+
+[node name="UI" type="Node" parent="."]
+
+[node name="TextureRect2" type="TextureRect" parent="UI"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 84.0
+offset_bottom = 84.0
+texture = ExtResource("7_tu31c")
+
+[node name="Esc" type="Label" parent="UI"]
+offset_left = 94.0
+offset_top = 38.0
+offset_right = 165.0
+offset_bottom = 79.0
+theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_fonts/font = ExtResource("8_u21bi")
+theme_override_font_sizes/font_size = 30
+text = "Esc"
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = -81.0
+offset_right = 113.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="UI/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_colors/font_outline_color = Color(0.317647, 0.337255, 0.839216, 1)
+theme_override_fonts/font = ExtResource("8_u21bi")
+theme_override_font_sizes/font_size = 80
+text = "0 - 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Out_Area2D" to="Player1" method="_on_out_area_2d_body_entered"]
+[connection signal="body_entered" from="Out_Area2D" to="Player2" method="_on_out_area_2d_body_entered"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4cew60aglkyp"]
+
+[ext_resource type="AudioStream" uid="uid://c20vjg1ee4k4f" path="res://audio/mind-bender-2_Please credit as_Mind Bender 2 by Eric Matyas Soundimage.org.mp3" id="1_g84o6"]
+[ext_resource type="Script" uid="uid://bgolq58ylhx2n" path="res://audio_stream_player.gd" id="1_td4n3"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_g84o6")
+autoplay = true
+parameters/looping = true
+script = ExtResource("1_td4n3")
+
+[node name="Audio" type="Node" parent="."]

@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://bihnom7mynnv2"]
+
+[ext_resource type="Texture2D" uid="uid://cjmmw6k5f4g45" path="res://images/orb_FORCE-Sheet.png" id="1_g5md4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ednu"]
+atlas = ExtResource("1_g5md4")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyim5"]
+atlas = ExtResource("1_g5md4")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2gu8"]
+atlas = ExtResource("1_g5md4")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34y7m"]
+atlas = ExtResource("1_g5md4")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy4de"]
+atlas = ExtResource("1_g5md4")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hshfc"]
+atlas = ExtResource("1_g5md4")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxsjr"]
+atlas = ExtResource("1_g5md4")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x88nl"]
+atlas = ExtResource("1_g5md4")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78orl"]
+atlas = ExtResource("1_g5md4")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d156j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ednu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyim5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2gu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34y7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy4de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hshfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxsjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x88nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78orl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eqfhk"]
+radius = 24.33105
+
+[node name="FORCE" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d156j")
+autoplay = "default"
+frame_progress = 0.6661444
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_eqfhk")

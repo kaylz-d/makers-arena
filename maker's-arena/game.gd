@@ -14,7 +14,9 @@ var music_on = true
 var current_scene = ""
 
 var PLAYER_1_SPEED = 46200.0
+var PLAYER_1_ROT_SPEED = 5.2
 var PLAYER_2_SPEED = 46200.0
+var PLAYER_2_ROT_SPEED = 5.2
 
 signal player_won(winner)
 signal change_num_rounds(new_num)
