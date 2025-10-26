@@ -56,8 +56,8 @@ func _apply_initial_theme() -> void:
 	
 	# ready music
 	if game.music_on:
-		#musicOFF.add_theme_color_override("font_color", Color("#540237"))
-		#musicON.add_theme_color_override("font_color", Color("#20CBD7"))
+		musicOFF.add_theme_color_override("font_color", Color("#540237"))
+		musicON.add_theme_color_override("font_color", Color("#20CBD7"))
 	else:
 		musicOFF.add_theme_color_override("font_color", Color("#f979be"))
 		musicON.add_theme_color_override("font_color", Color("#064a4f"))
