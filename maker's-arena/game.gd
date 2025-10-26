@@ -2,6 +2,8 @@ extends Node
 
 @export var music: AudioStream
 var result_text: String = ""
+
+#SETTINGS
 var num_rounds:= 5
 var p1_score = 0
 var p2_score = 0
@@ -12,7 +14,9 @@ var timer_on = false
 var can_have_timer = true
 var music_on = true
 var current_scene = ""
+var current_settings_selection = 0
 
+#ARENA
 var PLAYER_1_SPEED = 46200.0
 var PLAYER_1_ROT_SPEED = 5.2
 var PLAYER_1_PUSH_FORCE = 400.0
