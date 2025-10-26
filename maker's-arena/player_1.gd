@@ -22,6 +22,13 @@ func _good_to_bounce() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	# attempt to have it reset at the beginning but won't work
+	#if game.game_completed >= 1:
+		#game.game_completed += 1
+		#if game.game_completed >= 10:
+			#_p1_reset_position()
+			#game.game_completed = 0
+	
 	#print("Player 1 speed: " + str(game.PLAYER_1_SPEED))
 	
 	if game.solo_mode:

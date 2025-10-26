@@ -3,6 +3,8 @@ extends Node
 @export var music: AudioStream
 var result_text: String = ""
 
+var game_completed = 0
+
 #SETTINGS
 var num_rounds:= 5
 var p1_score = 0

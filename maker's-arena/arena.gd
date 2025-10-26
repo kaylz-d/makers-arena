@@ -19,31 +19,6 @@ func _ready() -> void:
 	print("this is readying tOOO MUCH")
 	game.current_scene_imo = "Arena"
 	
-	#print("Children of ", self.name, ":", get_children())
-	#print("Player 2 exists?", has_node("Player2"))
-	# this works only after switching to the arena screen
-	
-	#print("Does Player 2 exist here?", has_node("/root/Player2"))
-	#print("Does Player 2 exist here?", has_node("Players/Player2"))
-	#print("Does Player 2 exist here?", has_node("res://player_2.tscn"))
-	#print("Does Player 2 exist here?", has_node("player_2"))
-	#var Player2 = get_node("Player2")
-	#var Player2_Node2D = get_node("Player2/Node2D")
-	#var Player2_CollisionPolygon2D = get_node("Player2/CollisionPolygon2D")
-	#var player1 = $PLayer1
-	#var player2 = $Player2
-	
-	
-	#if game.solo_mode:
-		#Player2.rotation = 0.0 # tricky.
-		#Player2_Node2D.rotation = -90.0
-		#Player2_CollisionPolygon2D.rotation = -90.0
-	#else:
-		#Player2.rotation = -90.0
-		#Player2_Node2D.rotation = 0
-		#Player2_CollisionPolygon2D.rotation = 0
-		
-	
 	game._start_timer()
 	pass # Replace with function body.
 	
