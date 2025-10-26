@@ -13,7 +13,7 @@ var solo_mode = false
 var timer_on = false
 var can_have_timer = true
 var music_on = true
-var current_scene = ""
+var current_scene_imo = ""
 var current_settings_selection = 0
 
 #ARENA
@@ -74,7 +74,7 @@ func _on_timer_timeout():
 func change_scene(scene_path: String) -> void:
 	var new_scene = load(scene_path).instantiate()
 	
-	if current_scene:
-		current_scene = new_scene
-	current_scene = new_scene
-	get_tree().root.add_child(current_scene)
+	if current_scene_imo:
+		current_scene_imo = new_scene
+	current_scene_imo = new_scene
+	get_tree().root.add_child(current_scene_imo)

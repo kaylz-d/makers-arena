@@ -29,7 +29,7 @@ var current_num_rounds = game.num_rounds
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	game.current_scene = "Settings"
+	game.current_scene_imo = "Settings"
 	current_num_rounds = game.num_rounds
 	_update_num_rounds_label()
 	
@@ -106,10 +106,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		selection_arrow.position = Vector2(80.0, 284.0)
 		if event.is_action_pressed("s"):
 			game.solo_mode = false
+			call_deferred("_update_solo_colors", false)
 			#offLabel.add_theme_color_override("font_color", Color("#064a4f"))
 			#onLabel.add_theme_color_override("font_color", Color("#f979be"))
 		elif event.is_action_pressed("w"):
 			game.solo_mode = true
+			call_deferred("_update_solo_colors", true)
 			print("solo mode is true")
 			#offLabel.add_theme_color_override("font_color", Color("#20CBD7"))
 			#onLabel.add_theme_color_override("font_color", Color("#540237"))
@@ -123,6 +125,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			game.timer_on = true
 			#specific_offLabel.add_theme_color_override("font_color", Color("#540237"))
 			#specific_onLabel.add_theme_color_override("font_color", Color("#20CBD7"))
+			call_deferred("_update_timer_colors", true)
 			print("made it")
 		elif event.is_action_pressed("s"):
 			#game.timer_override = false
@@ -131,17 +134,20 @@ func _unhandled_input(event: InputEvent) -> void:
 			print("here")
 			game.can_have_timer = false
 			game.timer_on = false
+			call_deferred("_update_timer_colors", false)
 	elif game.current_settings_selection == 3: #MUSIC TOGGLE
 		selection_arrow.position = Vector2(80.0, 424.0)
 		if event.is_action_pressed("w"):
 			game.music_on = true
 			#musicOFF.add_theme_color_override("font_color", Color("#540237"))
 			#musicON.add_theme_color_override("font_color", Color("#20CBD7"))
+			call_deferred("_update_music_colors", true)
 			print("music on")
 		elif event.is_action_pressed("s"):
 			game.music_on = false
 			#musicOFF.add_theme_color_override("font_color", Color("#f979be"))
 			#musicON.add_theme_color_override("font_color", Color("#064a4f"))
+			call_deferred("_update_music_colors", false)
 			print("music off")
 	pass
 

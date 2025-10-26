@@ -17,7 +17,7 @@ var FORCE_scene = preload("res://collectibles/FORCE.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("this is readying tOOO MUCH")
-	game.current_scene = "Arena"
+	game.current_scene_imo = "Arena"
 	
 	#print("Children of ", self.name, ":", get_children())
 	#print("Player 2 exists?", has_node("Player2"))

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Maker's Arena"
-run/main_scene="uid://d24af1fyunde2"
+run/main_scene="uid://dmfn6ti478tn8"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

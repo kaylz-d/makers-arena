@@ -24,6 +24,8 @@ const p2_yi := 400.0
 var just_reset = false
 
 func _ready() -> void:	
+	
+	game.current_scene_imo = "Arena"
 
 	if has_node("Node2D"):
 		var my_node2d = get_node("Node2D")
@@ -52,7 +54,8 @@ func _physics_process(delta: float) -> void:
 	
 	#print("Player 2 Speed: " + str(game.PLAYER_2_SPEED))
 	
-	if game.current_scene == "Arena":
+	#print(typeof(game.current_scene), " is ", game.current_scene)
+	if game.current_scene_imo == "Arena":
 		var input_velocity := Vector2.ZERO
 		
 		#if _good_to_bounce():
